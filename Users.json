@@ -1,0 +1,8 @@
+[
+  { "userRole":"VOA Team Manager","PID": "7928212@hmrc.gov.uk", "password": "HTYkIzIgICQ8ITdjZ3I=" },
+    { "userRole":"VOA Team Manager1","PID": "7865772@hmrc.gov.uk", "password": "BzYgJxImJzw+Mic6PD0HNiAnNiFhZg==" },
+  { "userRole":"VOA New Estate Approver","PID":"7928224@hmrc.gov.uk", "password": "HTYkIzIgICQ8ITdjZ3I="},
+   { "userRole":"VOA QC User","PID": "7928209@hmrc.gov.uk", "password": "HTYkIzIgICQ8ITdjZ3I=" },
+  { "userRole":"VOA Researcher Valuer","PID": "7928206@hmrc.gov.uk", "password": "HTYkIzIgICQ8ITdjZ3I=" },
+ 
+]
