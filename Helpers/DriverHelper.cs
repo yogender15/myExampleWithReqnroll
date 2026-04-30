@@ -193,9 +193,11 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         {
             try
             {
-                Driver?.Quit();
-                Driver?.Close();
-                Driver?.Quit();
+                if (Driver != null)
+                {
+                    Driver.Quit();
+                    Driver = null;
+                }
             }
             catch { }
         }
