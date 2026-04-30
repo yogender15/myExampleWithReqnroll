@@ -1,5 +1,6 @@
-﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
+using AventStack.ExtentReports.Model;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Config;
 using OpenQA.Selenium;
@@ -7,26 +8,36 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Reqnroll ;
+using Reqnroll .Infrastructure;
 using Log = Serilog.Log;
-using System.Threading;
+
 
 namespace POMSeleniumFrameworkPoc1.Helpers
 {
     [Binding]
-    public class Hooks
+    public class Hooks : DriverHelper
     {
+        //Extent Report code
         public static ExtentReports extent = new ExtentReports();
-        private static ThreadLocal<ExtentTest> featureTest = new ThreadLocal<ExtentTest>();
-        private static ThreadLocal<ExtentTest> scenarioTest = new ThreadLocal<ExtentTest>();
+        private static ExtentTest extentTest;
+        private static ExtentTest scenarioTest;
         public static string testResultsRootPath;
-       
-        private readonly ScenarioContext _scenarioContext;
-        private readonly FeatureContext _featureContext;
-        
-        public Hooks(ScenarioContext scenarioContext, FeatureContext featureContext)
+
+
+        private readonly IReqnrollOutputHelper _specFlowOutputHelper;
+        public  ScenarioContext _scenarioContext;
+        public FeatureContext _featureContext;
+
+        public Hooks(IReqnrollOutputHelper specFlowOutputHelper , ScenarioContext scenarioContext, FeatureContext featureContext)
         {
+            _specFlowOutputHelper = specFlowOutputHelper;
             _scenarioContext = scenarioContext;
             _featureContext = featureContext;
         }
@@ -34,57 +45,79 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            // Logging setup
             string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + Config.LogFilePath);
+
             LoggingLevelSwitch levelSwitch = new LoggingLevelSwitch(LogEventLevel.Information);
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
-                .WriteTo.File(logFilePath)
-                .CreateLogger();
+                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}").CreateLogger();
+            //     .MinimumLevel.ControlledBy(levelSwitch)
+            //  .WriteTo.File(logFilePath, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} | {Level:u3} | {Message} {NewLine}",
+            //    rollingInterval: RollingInterval.Day).CreateLogger();
+
+        }
+
+        [BeforeFeature]
+        public static void BeforeFeature(FeatureContext context)
+        {
+            Log.Information("Selecting feature File {0} to run", context.FeatureInfo.Title);
+
+        }
+
+        [BeforeScenario("UI")]
+        public void BeforeScenario()
+        {
+            switch (Config.BrowserType)
+            {
+                case "chrome":
+                    CloseExistingChromeInstances();
+                    break;
+                case "edge":
+                    CloseExistingEdgeInstances();
+                    break;
+                case "EdgeGrid":
+                    CloseExistingChromeInstances();
+                    break;
+            }
+
+            Driver = DriverInitiation();
+            SetbaseURL();
 
             //Extent Report code
-            //testResultsRootPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\TestResults";
-            testResultsRootPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\TestResults");
+            testResultsRootPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\TestResults";
+                //AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug", "TestResults");
             var sparkReporter = new ExtentSparkReporter(Path.Combine(testResultsRootPath, "Report.html"));
             sparkReporter.Config.ReportName = "Automation Status Report";
             sparkReporter.Config.DocumentTitle = "Automation Status Report";
             sparkReporter.Config.Theme = Theme.Dark;
             extent.AttachReporter(sparkReporter);
 
-            // Set base URL only once if environment doesn't change per scenario
-            string propertiesFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.EnvironmentValFilePath);
-            PropertiesReader _propertiesReader = new PropertiesReader(propertiesFilePath);
-            Config.BaseUrl = _propertiesReader.Get(Config.EnvironmentVal);
-        }
-
-        [BeforeScenario("UI")]
-        public void BeforeScenario()
-        {
-
-            DriverHelper.DriverInitiation();
-            //SetbaseURL();
-
-            if (featureTest.Value == null)
-            {
-                featureTest.Value = extent.CreateTest<Feature>(_featureContext.FeatureInfo.Title);
-            }
-            //Create Scenario under Feature
-            scenarioTest.Value = featureTest.Value.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
+            scenarioTest = extentTest.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
         } 
 
         [AfterScenario("UI")]
         public void AfterScenario()
         {
-            if (_scenarioContext.TestError != null)
+            if (ScenarioContext.Current.TestError != null)
             {
-                var screenshotPath = DriverHelper.TakeScreenShot();
-                scenarioTest.Value.AddScreenCaptureFromPath(screenshotPath);
-                Log.Error("Test failed! Screenshot captured: {ScreenShotPath}", screenshotPath);
+                TakeScreenShot(); 
             }
             //extent.Flush();
-            DriverHelper.DriverDispose();
+            DriverDispose();
             Log.Information("The driver has been disposed");
 
+        }
+
+        [AfterTestRun]
+        public static void AfterTestRun()
+        {
+            //string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            //string batchFile = @"VOA_Automation\CTAzureAutomationRepo\BSTVOAQAAutomation\BSTVOAQAAutomation\bin\Debug\CreateHTMLReport.bat";
+            // string batchFilePath = Path.Combine(userDirectory,batchFile);
+            //string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            //String baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //string batchFile = @"VOA_Automation\CTAzureAutomationRepo\BSTVOAQAAutomation\BSTVOAQAAutomation\bin\Debug\CreateHTMLReport.bat";
+            //string batchFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "CreateHTMLReport.bat");
+           // Process.Start(batchFilePath);
         }
 
         [AfterStep()]
@@ -95,19 +128,48 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                 string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 string screenShotFolder = Path.Combine(userDirectory, @"VOA_Automation\CTAzureAutomationRepo\BSTVOAQAAutomation\BSTVOAQAAutomation\ScreenShots");
 
-                string screenshotFilePath = Path.Combine(screenShotFolder, DateTime.Now.ToString("ssfff") + $"{_scenarioContext.ScenarioInfo.Title.Replace(" ", "_")}_screenshot.png");
+                string screenshotFilePath = Path.Combine(screenShotFolder, DateTime.Now.ToString("ssfff") + $"{ScenarioContext.Current.ScenarioInfo.Title.Replace(" ", "_")}_screenshot.png");
                 string filename = Path.ChangeExtension(Path.GetRandomFileName(), "png");
                 //  screenshottaker.GetScreenshot().SaveAsFile(filename);
                 //  _specFlowOutputHelper.AddAttachment(filename);
             }
 
         }
-
-        [AfterTestRun]
-        public static void AfterTestRun()
+        private void CloseExistingChromeInstances()
         {
-            extent.Flush();
-            Log.CloseAndFlush();
+
+            var chromeProcesses = Process.GetProcessesByName("chrome");
+            foreach (var process in chromeProcesses)
+            {
+                try
+                {
+                    process.Kill();
+                    process.WaitForExit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error closing chrome process: {ex.Message}");
+                }
+            }
+        }
+
+        private void CloseExistingEdgeInstances()
+        {
+
+            var edgeProcesses = Process.GetProcessesByName("msedge");
+            foreach (var process in edgeProcesses)
+            {
+                try
+                {
+                    process.Kill();
+                    process.WaitForExit();
+                    process.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error closing edge process: {ex.Message}");
+                }
+            }
         }
 
         private void SetbaseURL()
@@ -120,28 +182,34 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         }
 
 
-        [AfterStep]
-        public void AfterStep()
+        //Extent Report code
+
+        [BeforeFeature]
+        public static void BeforeFeature()
         {
-            var scenarioInfo = _scenarioContext;
-            var stepInfo = ScenarioStepContext.Current.StepInfo;
-            var stepType = stepInfo.StepDefinitionType.ToString();
-            var stepText = stepInfo.Text;
+            extentTest = extent.CreateTest<Feature>(FeatureContext.Current.FeatureInfo.Title.ToString());
+        }
+
+        [AfterStep]
+        public static void AfterStep()
+        {
+            var scenarioInfo = ScenarioContext.Current;
+            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
             if (scenarioInfo.TestError == null)
             {
                 switch (stepType)
                 {
                     case "Given":
-                        scenarioTest.Value.CreateNode<Given>(stepText);
+                        scenarioTest.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
                         break;
                     case "When":
-                        scenarioTest.Value.CreateNode<When>(stepText);
+                        scenarioTest.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
                         break;
                     case "Then":
-                        scenarioTest.Value.CreateNode<Then>(stepText);
+                        scenarioTest.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
                         break;
                     case "And":
-                        scenarioTest.Value.CreateNode<And>(stepText);
+                        scenarioTest.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
                         break;
                     default:
                         break;
@@ -151,23 +219,23 @@ namespace POMSeleniumFrameworkPoc1.Helpers
 
             else
             {
-                var screenshotPath = DriverHelper.TakeScreenShot();
+                var screenshotPath = TakeScreenShot();
                 switch (stepType)
                 {
                     case "Given":
-                        scenarioTest.Value.CreateNode<Given>(stepText)
+                        scenarioTest.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text)
                             .Fail(scenarioInfo.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath(screenshotPath).Build());
                         break;
                     case "When":
-                        scenarioTest.Value.CreateNode<When>(stepText)
+                        scenarioTest.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text)
                             .Fail(scenarioInfo.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath(screenshotPath).Build());
                         break;
                     case "Then":
-                        scenarioTest.Value.CreateNode<Then>(stepText)
+                        scenarioTest.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text)
                             .Fail(scenarioInfo.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath(screenshotPath).Build());
                         break;
                     case "And":
-                        scenarioTest.Value.CreateNode<And>(stepText)
+                        scenarioTest.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text)
                             .Fail(scenarioInfo.TestError.Message, MediaEntityBuilder.CreateScreenCaptureFromPath(screenshotPath).Build());
                         break;
                     default:
