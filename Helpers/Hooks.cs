@@ -54,6 +54,15 @@ namespace POMSeleniumFrameworkPoc1.Helpers
             //  .WriteTo.File(logFilePath, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} | {Level:u3} | {Message} {NewLine}",
             //    rollingInterval: RollingInterval.Day).CreateLogger();
 
+            testResultsRootPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\TestResults";
+            Directory.CreateDirectory(testResultsRootPath);
+
+            var sparkReporter = new ExtentSparkReporter(Path.Combine(testResultsRootPath, "Report.html"));
+            sparkReporter.Config.ReportName = "Automation Status Report";
+            sparkReporter.Config.DocumentTitle = "Automation Status Report";
+            sparkReporter.Config.Theme = Theme.Dark;
+            extent.AttachReporter(sparkReporter);
+
         }
 
         [BeforeFeature]
@@ -82,17 +91,8 @@ namespace POMSeleniumFrameworkPoc1.Helpers
             Driver = DriverInitiation();
             SetbaseURL();
 
-            //Extent Report code
-            testResultsRootPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\TestResults";
-                //AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug", "TestResults");
-            var sparkReporter = new ExtentSparkReporter(Path.Combine(testResultsRootPath, "Report.html"));
-            sparkReporter.Config.ReportName = "Automation Status Report";
-            sparkReporter.Config.DocumentTitle = "Automation Status Report";
-            sparkReporter.Config.Theme = Theme.Dark;
-            extent.AttachReporter(sparkReporter);
-
             scenarioTest = extentTest.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
-        } 
+        }
 
         [AfterScenario("UI")]
         public void AfterScenario()
