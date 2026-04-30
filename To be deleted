@@ -1,0 +1,45 @@
+As-Is Findings
+
+DriverHelper.Driver is a global static browser instance.
+This works for single-thread execution, but it tightly couples the whole framework to one browser at a time.
+
+Hooks.BeforeScenario() kills all existing Chrome/Edge processes.
+This can clean up stale browsers, but it is risky because it may close browsers the user has open outside the test run.
+
+TakeScreenShot() closes the browser.
+Screenshot capture should normally only capture evidence. At the moment it also disposes the driver, which mixes two responsibilities.
+
+Extent report setup happens inside every scenario.
+A report should usually be configured once at test-run start, then scenarios should only add entries to it.
+
+AfterTestRun() does not flush the Extent report.
+If extent.Flush() is not called, the report may be incomplete or not written.
+
+There are two [BeforeFeature] hooks in Hooks.cs.
+One logs the feature name, the other creates the Extent feature node. This can work, but it is harder to reason about and should be consolidated.
+
+ScenarioContext.Current and FeatureContext.Current are used in static methods.
+It works in older-style code, but the constructor-injected _scenarioContext and _featureContext already exist and are cleaner.
+
+DriverDispose() calls Quit(), Close(), then Quit() again.
+Usually one Driver?.Quit() is enough. Calling Close() after Quit() can throw, though the catch hides it.
+
+Config.BaseUrl is set in SetbaseURL() before each UI scenario.
+If environment stays fixed, this is unnecessary repetition. It could be set once during test run setup.
+
+BeforeTestRun() prepares a log file path but currently only writes logs to console.
+The file logging code is commented out, so Config.LogFilePath is not actually being used.
+
+Recommended Improvements
+
+Separate screenshot capture from driver disposal.
+Move Extent report setup to BeforeTestRun() and flush in AfterTestRun().
+Simplify DriverDispose() to one safe Quit().
+Avoid killing all local browser processes unless absolutely required.
+Consolidate duplicate feature hooks.
+Prefer injected _scenarioContext / _featureContext instead of static .Current.
+Set Config.BaseUrl once if the environment is fixed.
+Either enable file logging properly or remove unused log file setup.
+Simple leadership summary:
+
+“The framework works for single execution, but it mixes responsibilities in a few places. Browser setup, screenshot capture, report generation, and cleanup should be separated. That will make failures easier to diagnose and make the framework more stable before we think about parallel execution.”
