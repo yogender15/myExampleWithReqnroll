@@ -167,24 +167,26 @@ namespace POMSeleniumFrameworkPoc1.Helpers
             try
             {
                 var artifactDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Screenshots");
+                if (!Directory.Exists(artifactDirectory))
+                {
+                    Directory.CreateDirectory(artifactDirectory);
+                }
+
                 ITakesScreenshot takesScreenshot = Driver as ITakesScreenshot;
+                if (takesScreenshot == null)
+                {
+                    return null;
+                }
+
                 Screenshot screenshot = takesScreenshot.GetScreenshot();
 
                 string screenshotFilePath = Path.Combine(artifactDirectory, DateTime.Now.ToString("ssfff") + $"{ScenarioContext.Current.ScenarioInfo.Title.Replace(" ", "_")}_screenshot.jpeg");
                 //takesScreenshot.GetScreenshot().SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Jpeg);
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "Screenshots")))
-                {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "Screenshots"));
-                }
                 screenshot.SaveAsFile(screenshotFilePath);
                 Console.WriteLine($"the filepath is {screenshotFilePath}");
                 return screenshotFilePath;
             }
             catch { return null; }
-            finally
-            {
-                DriverDispose();
-            }
         }
 
         public static void DriverDispose()
