@@ -110,6 +110,8 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         [AfterTestRun]
         public static void AfterTestRun()
         {
+            extent.Flush();
+            Log.CloseAndFlush();
             //string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             //string batchFile = @"VOA_Automation\CTAzureAutomationRepo\BSTVOAQAAutomation\BSTVOAQAAutomation\bin\Debug\CreateHTMLReport.bat";
             // string batchFilePath = Path.Combine(userDirectory,batchFile);
