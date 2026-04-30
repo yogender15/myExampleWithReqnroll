@@ -1,0 +1,39 @@
+Given your current suite complexity, I would not recommend a full framework migration as the first move. I would recommend a phased migration toward Playwright .NET, while keeping Reqnroll only if the business still values Gherkin feature files.
+
+Best Fit
+For your project, the best future target is likely:
+
+Playwright .NET + NUnit
+Optional, if business-readable BDD is still important:
+
+Reqnroll + Playwright .NET + NUnit
+Why Playwright Fits Your Complexity
+Your current framework has many Selenium pain points:
+
+lots of Thread.Sleep
+custom wait helpers
+fragile click/scroll JavaScript helpers
+browser profile/session issues
+screenshot/reporting complexity
+Dynamics/PowerApps-style UI with async loading
+large end-to-end flows
+Playwright is a strong fit because it has built-in auto-waiting before actions. Official docs describe that Playwright waits for elements to be visible, stable, enabled, and able to receive events before clicking or filling. That directly addresses a lot of flakiness your current framework is manually trying to handle.
+
+It also has a trace viewer, which is valuable for leadership and debugging: instead of only “test failed at step X,” you can replay what happened, see screenshots, DOM snapshots, console logs, and network activity.
+
+What I Would Not Choose
+I would not move to Cypress for this project if you want to stay in .NET and have existing NUnit/Reqnroll investment.
+
+I would not move to Java/TestNG/Cucumber unless the organisation wants a full language/platform shift. That would be a larger rewrite with less reuse.
+
+I would not move only from Selenium + Reqnroll to another Selenium wrapper. That keeps most of the same browser/waiting problems.
+
+Pragmatic Migration Path
+
+Stabilise the current Selenium framework enough to keep delivery running.
+Pick 2 or 3 high-value flaky scenarios.
+Rebuild those in Playwright .NET.
+Compare execution stability, maintenance effort, failure evidence, and runtime.
+Gradually migrate critical journeys first, not the full suite at once.
+
+“Because our suite is large, UI-heavy, and has many timing/waiting problems, Playwright .NET is the best strategic fit. It reduces custom framework code, gives better debugging evidence, and handles modern web UI timing better than our current Selenium setup. We should not rewrite everything immediately; we should prove value with a small pilot and migrate gradually.”
