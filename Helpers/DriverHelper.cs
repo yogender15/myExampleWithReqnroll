@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
@@ -11,7 +11,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Security;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
@@ -21,23 +20,13 @@ namespace POMSeleniumFrameworkPoc1.Helpers
     public class DriverHelper
     {
 
-        //public static IWebDriver Driver;
-
-        private static ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
-        
-        public static IWebDriver Driver
-        {
-            get { return _driver.Value; }
-            set { _driver.Value = value; }
-        }
+        public static IWebDriver Driver;
 
         public static double DriverWait = 30;
 
-        public static IWebDriver DriverInitiation()
+        public IWebDriver DriverInitiation()
         {
             List<string> ls = new List<string>();
-            Driver = null;
-
             switch (Config.BrowserType)
             {
                 case "edge":
@@ -57,13 +46,12 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                     edgeoptions.AddArgument("ignore-certificate-errors");
                     edgeoptions.AddArgument("no-sandbox");
                     //edgeoptions.AddArgument("--window-size=1920,1080");
-                    //edgeoptions.AddArgument("--start-maximized");
+                    edgeoptions.AddArgument("--start-maximized");
                     edgeoptions.AddArgument("--disable-gpu");
-                    //edgeoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
+                    edgeoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
                     //var service = EdgeDriverService.CreateDefaultService($"C:\\Users\\8902876\\Desktop\\Drivers\\edgedriver_win64\\msedgedriver.exe");
                     //Driver = new EdgeDriver($"C:\\Program Files (x86)\\Microsoft\\Edge\\Application",edgeoptions);
-                    //Driver = new EdgeDriver(EdgeDriverService.CreateDefaultService(), edgeoptions, System.TimeSpan.FromSeconds(360));
-                    Driver = new EdgeDriver(EdgeDriverService.CreateDefaultService(), edgeoptions, TimeSpan.FromSeconds(360));
+                    Driver = new EdgeDriver(EdgeDriverService.CreateDefaultService(), edgeoptions, System.TimeSpan.FromSeconds(360));
                     if (userID.Equals("ServiceProfiles"))
                     {
                         var screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
@@ -76,9 +64,8 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                     {
                         Driver.Manage().Window.Maximize();
                     }
-                    Driver.Manage().Window.Maximize();
                     Driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(360));
-                    break;                    
+                    return Driver;
 
                 case "edge1":
                     var edgeoptions_1 = new EdgeOptions();
@@ -86,100 +73,89 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                     edgeoptions_1.AddArgument("disable-infobars");
                     edgeoptions_1.AddArgument("start-maximized");
                     edgeoptions_1.AddArgument("ignore-certificate-errors");
-                    Driver = new EdgeDriver(edgeoptions_1);
-                    //Driver.Manage().Window.Maximize();
-                    //Driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(360));
-                    //return Driver;
+                    Driver = new EdgeDriver();
                     Driver.Manage().Window.Maximize();
                     Driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(360));
-                    break;
-
+                    return Driver;
                 case "edgeheadless":
-                    var edgeoptionsHL = new EdgeOptions();
-                    //ls.Add("enable-automation");
-                    edgeoptionsHL.AddExcludedArguments(ls);
-                    edgeoptionsHL.AddArgument("disable-infobars");
-                    edgeoptionsHL.AddArgument("no-sandbox");
+                    edgeoptions = new EdgeOptions();
+                    ls.Add("enable-automation");
+                    edgeoptions.AddExcludedArguments(ls);
+                    edgeoptions.AddArgument("disable-infobars");
+                    edgeoptions.AddArgument("no-sandbox");
 
-                    edgeoptionsHL.AddArgument("--start-maximized");
-                    edgeoptionsHL.AddArgument("disable-web-security");
-                    edgeoptionsHL.AddArgument("ignore-certificate-errors");
-                    //edgeoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
-                    edgeoptionsHL.AddArguments("--headless=new");
-                    edgeoptionsHL.AddArgument("--window-size=1920,1080");
+                    edgeoptions.AddArgument("--start-maximized");
+                    edgeoptions.AddArgument("disable-web-security");
+                    edgeoptions.AddArgument("ignore-certificate-errors");
+                    edgeoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
+                    edgeoptions.AddArguments("--headless=new");
+                    edgeoptions.AddArgument("--window-size=1920,1080");
 
                     // Set device scale factor (e.g., 1.25 = 125% zoom)
                     //edgeoptions.AddArgument("--force-device-scale-factor=0.8");
-                    Driver = new EdgeDriver(edgeoptionsHL);                   
+                    Driver = new EdgeDriver(edgeoptions);
                     //IJavaScriptExecutor jse = Driver as IJavaScriptExecutor;
                     //jse.ExecuteScript("document.body.style.zoom='0.75'");
-                    break;
-
+                    return Driver;
                 case "newEdge":
-                    var edgeoptionsNew = new EdgeOptions();
-                    //ls.Add("enable-automation");
-                    edgeoptionsNew.AddExcludedArguments(ls);
-                    edgeoptionsNew.AddArgument("disable-infobars");
-                    edgeoptionsNew.AddArgument("start-maximized");
-                    edgeoptionsNew.AddArgument("disable-web-security");
-                    edgeoptionsNew.AddArgument("ignore-certificate-errors");
-                    edgeoptionsNew.AddArgument("no-sandbox");
+                    var edgeoptions1 = new EdgeOptions();
+                    ls.Add("enable-automation");
+                    edgeoptions1.AddExcludedArguments(ls);
+                    edgeoptions1.AddArgument("disable-infobars");
+                    edgeoptions1.AddArgument("start-maximized");
+                    edgeoptions1.AddArgument("disable-web-security");
+                    edgeoptions1.AddArgument("ignore-certificate-errors");
+                    edgeoptions1.AddArgument("no-sandbox");
                     //edgeoptions1.AddAdditionalEdgeOption("InPrivate", true);
-                    edgeoptionsNew.AddArgument("inprivate");
+                    edgeoptions1.AddArgument("inprivate");
 
                     //edgeoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
                     //Driver = new EdgeDriver($"C:\\Program Files (x86)\\Microsoft\\Edge\\Application",edgeoptions);
-                    Driver = new EdgeDriver(edgeoptionsNew);
+                    Driver = new EdgeDriver(edgeoptions1);
                     Driver.Manage().Window.Maximize();
-                    break;
-
+                    return Driver;
                 case "chrome":
-                    var chromeOptions = new ChromeOptions();
-                    //ls.Add("enable-automation");
-                    chromeOptions.AddExcludedArguments(ls);
-                    chromeOptions.AddArgument("disable-infobars");
-                    chromeOptions.AddArgument("start-maximized");
-                    chromeOptions.AddArgument("disable-web-security");
-                    chromeOptions.AddArgument("ignore-certificate-errors");
-                    //chromeOptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\User Data");
+                    var options = new ChromeOptions();
+                    ls.Add("enable-automation");
+                    options.AddExcludedArguments(ls);
+                    options.AddArgument("disable-infobars");
+                    options.AddArgument("start-maximized");
+                    options.AddArgument("disable-web-security");
+                    options.AddArgument("ignore-certificate-errors");
+                    options.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Google\\Chrome\\User Data");
 
-                    Driver = new ChromeDriver(chromeOptions);
+                    Driver = new ChromeDriver(options);
                     Driver.Manage().Window.Maximize();
                     Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(DriverWait);
                     //Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(DriverWait);
-                    break;
+                    return Driver;
 
 
                 case "EdgeGrid":
                     var gridoptions = new ChromeOptions();
                     //gridoptions.AddAdditionalEdgeOption();
-                    //System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
-                    //gridoptions.BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
-                    ////ls.Add("enable-automation");
-                    ////gridoptions.AddArgument("--remote-debugging-pipe");
+                    System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
+                    gridoptions.BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+                    //ls.Add("enable-automation");
+                    //gridoptions.AddArgument("--remote-debugging-pipe");
 
-                    ////gridoptions.AddExcludedArguments(ls);
-                    ////gridoptions.AddArgument("disable-infobars");
-                    ////gridoptions.AddArgument("start-maximized");
-                    ////gridoptions.AddArgument("disable-web-security");
-                    ////gridoptions.AddArgument("ignore-certificate-errors");
-                    ////gridoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
-                    //try
-                    //{
-                    //    Driver = new RemoteWebDriver(new Uri("http://10.186.28.35:4444/wd/hub/"), gridoptions.ToCapabilities(), TimeSpan.FromSeconds(1000));
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Console.Write(e.InnerException);
-                    //    Console.Write(e.StackTrace);
-                    //}
-                    Driver = new RemoteWebDriver(
-                        new Uri("http://10.186.28.35:4444/wd/hub/"),
-                        gridoptions.ToCapabilities(),
-                        TimeSpan.FromSeconds(1000)
-                        );
+                    //gridoptions.AddExcludedArguments(ls);
+                    //gridoptions.AddArgument("disable-infobars");
+                    //gridoptions.AddArgument("start-maximized");
+                    //gridoptions.AddArgument("disable-web-security");
+                    //gridoptions.AddArgument("ignore-certificate-errors");
+                    //gridoptions.AddArgument($"user-data-dir={System.Environment.GetEnvironmentVariable("LOCALAPPDATA")}\\Microsoft\\Edge\\User Data");
+                    try
+                    {
+                        Driver = new RemoteWebDriver(new Uri("http://10.186.28.35:4444/wd/hub/"), gridoptions.ToCapabilities(), TimeSpan.FromSeconds(1000));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Write(e.InnerException);
+                        Console.Write(e.StackTrace);
+                    }
                     Driver.Manage().Window.Maximize();
-                    break;
+                    return (RemoteWebDriver)Driver;
             }
             return Driver;
         }
@@ -215,14 +191,9 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         {
             try
             {
-                if(Driver !=null)
-                {
-                    Driver.Quit();
-                    _driver.Value = null;
-                }
-                //Driver?.Quit();
-                //Driver?.Close();
-                //Driver?.Quit();
+                Driver?.Quit();
+                Driver?.Close();
+                Driver?.Quit();
             }
             catch { }
         }
