@@ -69,7 +69,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         public static void BeforeFeature(FeatureContext context)
         {
             Log.Information("Selecting feature File {0} to run", context.FeatureInfo.Title);
-
+            extentTest = extent.CreateTest<Feature>(context.FeatureInfo.Title.ToString());
         }
 
         [BeforeScenario("UI")]
@@ -181,15 +181,6 @@ namespace POMSeleniumFrameworkPoc1.Helpers
             PropertiesReader _propertiesReader = new PropertiesReader(propertiesFilePath);
 
           Config.BaseUrl = _propertiesReader.Get(Config.EnvironmentVal);
-        }
-
-
-        //Extent Report code
-
-        [BeforeFeature]
-        public static void BeforeFeature()
-        {
-            extentTest = extent.CreateTest<Feature>(FeatureContext.Current.FeatureInfo.Title.ToString());
         }
 
         [AfterStep]
