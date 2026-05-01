@@ -1,0 +1,108 @@
+name: $(Date:yyyyMMdd)$(Rev:.r)_${{ parameters.Environment }}Regression_Tests
+parameters:
+- name: Environment_val
+  type: string 
+  default: Category=SIT_Smoke
+  values:
+   - Category=FAT_Smoke
+   - Category=SIT_Smoke
+   - Category=UAT_Smoke
+   - Category=PPE_Smoke
+   - Category=MO_Smoke
+   - Category=TRN_Smoke
+- name: Environment
+  type: string
+  default: SIT
+  values:
+    - FAT
+    - SIT
+    - UAT
+    - PPE
+    - MO
+    - TRN
+- name: solution
+  type: string
+  default: '**\*.sln'
+- name: BuildPlatform
+  type: string
+  default: 'Any CPU'
+- name: BuildConfiguration
+  type: string
+  default: release
+- name: testRunTitle
+  type: string
+  default: 'Acceptance Test Run'
+
+stages:
+- stage: RunRegressionExecution
+  jobs:
+  - job : RunRegressionExecution
+    timeoutInMinutes: 1100
+    pool:
+      name: VOA-TESTTEAM-AUTOMATION
+      
+    displayName: Run Regression Execution
+
+    variables: 
+    - group: D365_${{ parameters.Environment }}_Regression
+    
+    steps:
+    - checkout: "git://BST D365/QA Test Automation@CT_ReqNRoll_Migration"
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        command: 'restore'
+        restoreSolution: '${{ parameters.solution }}'
+        feedsToUse: 'select'
+        noCache: true
+
+    - powershell: |
+        $sourceARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
+        $targetARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
+        Write-Host "((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath"
+        ((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath
+        az login --username '$(username)' --password '$(password)' --allow-no-subscriptions
+      displayName: 'PowerShell Script'
+
+    - task: VSBuild@1
+      displayName: 'Build solution'
+      inputs:
+        solution: '${{ parameters.solution }}'
+        platform: '${{ parameters.BuildPlatform }}'
+        configuration: '${{ parameters.BuildConfiguration }}'
+
+    - task: VSTest@2
+      displayName: 'Test Assemblies'
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\${{ parameters.BuildConfiguration }}\**.dll
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        testFiltercriteria: '${{ parameters.Environment_val }}'
+        runOnlyImpactedTests: false
+        runInParallel: true
+        platform: '${{ parameters.BuildPlatform }}'
+        configuration: '${{ parameters.BuildConfiguration }}'
+        rerunFailedTests: true
+        rerunType: 'basedOnTestFailureCount'
+      timeoutInMinutes: 1100
+      continueOnError: true
+
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: 'NUnit'
+        testResultsFiles: '$(Pipeline.Workspace)/s/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/TestResults/Report.html'
+        searchFolder: '$(Pipeline.Workspace)/s/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/TestResults'
+        mergeTestResults: true
+        failTaskOnFailedTests: true
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files'
+      inputs:
+        SourceFolder: '$(Pipeline.Workspace)/s/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/TestResults/'
+        Contents: '*Report.html'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      
