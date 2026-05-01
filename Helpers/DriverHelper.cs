@@ -5,15 +5,7 @@ using OpenQA.Selenium.Remote;
 using Reqnroll;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Security;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace POMSeleniumFrameworkPoc1.Helpers
 {
@@ -24,7 +16,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
 
         public static double DriverWait = 30;
 
-        public IWebDriver DriverInitiation()
+        public static IWebDriver DriverInitiation()
         {
             List<string> ls = new List<string>();
             switch (Config.BrowserType)
@@ -157,7 +149,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                     Driver.Manage().Window.Maximize();
                     return (RemoteWebDriver)Driver;
             }
-            return Driver;
+            throw new InvalidOperationException($"Unknown BrowserType '{Config.BrowserType}' — check App.config.");
         }
 
 
@@ -180,7 +172,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
 
                 Screenshot screenshot = takesScreenshot.GetScreenshot();
 
-                string screenshotFilePath = Path.Combine(artifactDirectory, DateTime.Now.ToString("ssfff") + $"{ScenarioContext.Current.ScenarioInfo.Title.Replace(" ", "_")}_screenshot.jpeg");
+                string screenshotFilePath = Path.Combine(artifactDirectory, DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + $"_{ScenarioContext.Current.ScenarioInfo.Title.Replace(" ", "_")}_screenshot.jpeg");
                 //takesScreenshot.GetScreenshot().SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Jpeg);
                 screenshot.SaveAsFile(screenshotFilePath);
                 Console.WriteLine($"the filepath is {screenshotFilePath}");
