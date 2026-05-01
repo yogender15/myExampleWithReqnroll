@@ -2,11 +2,13 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 using Reqnroll;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace POMSeleniumFrameworkPoc1.Helpers
 {
@@ -205,7 +207,21 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                 if (signInButton != null && signInButton.Count > 0 && signInButton[0].Displayed)
                 {
                     signInButton[0].Click();
-                    Log.Information("Sign in popup detected and dismissed");
+                    Log.Information("Sign in popup detected and dismissed — refreshing page");
+
+                    // Wait for the sign-in process to complete before refreshing
+                    var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                    wait.Until(d => !d.FindElements(
+                        By.XPath("//button[normalize-space()='Sign in'] | //input[@value='Sign in']"))
+                        .Any(e => e.Displayed));
+
+                    Driver.Navigate().Refresh();
+
+                    // Wait for the page to finish loading after refresh
+                    wait.Until(d => ((IJavaScriptExecutor)d)
+                        .ExecuteScript("return document.readyState").ToString() == "complete");
+
+                    Log.Information("Page refreshed successfully after sign in");
                 }
             }
             catch { }
