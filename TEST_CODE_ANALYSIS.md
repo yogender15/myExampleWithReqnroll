@@ -3,20 +3,34 @@
 
 ---
 
+## Execution Environment
+
+| Property | Detail |
+|---|---|
+| **Infrastructure** | 5 VMs, 2 users per VM (10 users total) |
+| **Access method** | Remote Desktop (RDP) from local laptops — browser and VS are visible on the VM |
+| **Test distribution** | Test cases split manually between the 10 users for execution |
+| **Parallelism model** | Cross-user split across VMs — no in-process parallel threading required |
+| **Display** | RDP sessions provide a visible display — headless mode is not needed |
+
+---
+
 ## Summary Table
 
-| # | Area | Issue | Files Affected | Priority |
-|---|---|---|---|---|
-| 1 | Steps | `PDF_Utility` try-catch block copy-pasted into every step method | All step files | High |
-| 2 | Steps | Three different spellings of the same wait step create three separate bindings | `CommonSteps.cs` + all `.feature` files | High |
-| 3 | Features | No `Background:` blocks — identical setup steps repeated in every scenario | All `.feature` files | High |
-| 4 | Steps | Duplicate step definitions for identical actions (`Given`/`When` same text, same body) | `CommonSteps.cs` | Medium |
-| 5 | Features | Hard `waits for 'N' secs` mixed with dynamic waits | All `.feature` files | Medium |
-| 6 | Steps | Micro step files (2–3 methods each) add file noise with no organisational value | `CompositePropertyChangeSteps.cs`, `PartDemolitionSteps.cs`, `PADEntrySteps.cs`, `CTInformalChallengeSteps.cs` | Medium |
-| 7 | Features | Commented-out steps accumulating throughout feature files | All `.feature` files | Low |
-| 8 | Features | Scenario names embed ticket IDs instead of describing what is verified | All `.feature` files | Low |
-| 9 | Steps | `CommonPage` instantiated inside every step body instead of once as a field | `CommonSteps.cs` | Low |
-| 10 | Features | Assertions written as `Given`/`And` instead of `Then` | All `.feature` files | Low |
+| # | Area | Issue | Files Affected | Priority | Status |
+|---|---|---|---|---|---|
+| 1 | Steps | `PDF_Utility` try-catch block copy-pasted into every step method | All step files | High | Open |
+| 2 | Steps | Three different spellings of the same wait step create three separate bindings | `CommonSteps.cs` + all `.feature` files | High | Open |
+| 3 | Features | No `Background:` blocks — identical setup steps repeated in every scenario | All `.feature` files | High | Open |
+| 4 | Steps | Duplicate step definitions for identical actions (`Given`/`When` same text, same body) | `CommonSteps.cs` | Medium | Open |
+| 5 | Features | Hard `waits for 'N' secs` mixed with dynamic waits | All `.feature` files | **High** *(escalated — see VM note)* | Open |
+| 6 | Steps | Micro step files (2–3 methods each) add file noise with no organisational value | `CompositePropertyChangeSteps.cs`, `PartDemolitionSteps.cs`, `PADEntrySteps.cs`, `CTInformalChallengeSteps.cs` | Medium | Open |
+| 7 | Features | Commented-out steps accumulating throughout feature files | All `.feature` files | Low | Open |
+| 8 | Features | Scenario names embed ticket IDs instead of describing what is verified | All `.feature` files | Low | Open |
+| 9 | Steps | `CommonPage` instantiated inside every step body instead of once as a field | `CommonSteps.cs` | Low | Open |
+| 10 | Features | Assertions written as `Given`/`And` instead of `Then` | All `.feature` files | Low | Open |
+| 11 | Config | `testThreadCount: 2` in `reqnroll.json` conflicted with the 10-user execution model | `reqnroll.json` | High | **Resolved** |
+| 12 | Hooks | Process-killing in `BeforeScenario` targeted all sessions on the VM — would kill second user's browser | `Hooks.cs` | High | **Resolved** |
 
 ---
 
@@ -25,15 +39,14 @@
 ---
 
 ### Issue 1 — `PDF_Utility` try-catch block copy-pasted into every step method
-**Area:** Steps &nbsp;|&nbsp; **Priority:** High
+**Area:** Steps &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
 | **What** | Every step method in every step file wraps its body in an identical try-catch block that instantiates `PDF_Utility` twice — once on success, once on failure |
 | **Where** | `CommonSteps.cs`, `LoginSteps.cs`, `RequestSteps.cs`, and all other step files — hundreds of occurrences |
 | **Why it matters** | Duplicates ~8 lines per method; the failure screenshot is already captured by `AfterStep` in `Hooks.cs` via Extent Reports, making the catch-block screenshot redundant |
-| **Example (before)** | See below |
-| **Recommendation** | Remove `PDF_Utility` from all step methods; centralise in `AfterStep` if the PDF evidence is still needed |
+| **Recommendation** | Remove `PDF_Utility` from all step methods; centralise in `AfterStep` if the PDF evidence trail is still needed |
 
 **Before — repeated in every step method:**
 ```csharp
@@ -64,7 +77,7 @@ public void GivenUserNavigatesTo(string menuItem, string section)
 ---
 
 ### Issue 2 — Three spellings of the same wait step create three separate bindings
-**Area:** Steps &nbsp;|&nbsp; **Priority:** High
+**Area:** Steps &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -83,7 +96,7 @@ public void GivenUserNavigatesTo(string menuItem, string section)
 ---
 
 ### Issue 3 — No `Background:` blocks — identical setup repeated in every scenario
-**Area:** Features &nbsp;|&nbsp; **Priority:** High
+**Area:** Features &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -122,7 +135,7 @@ Scenario: NP01_...
 ---
 
 ### Issue 4 — Duplicate step definitions for identical actions
-**Area:** Steps &nbsp;|&nbsp; **Priority:** Medium
+**Area:** Steps &nbsp;|&nbsp; **Priority:** Medium &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -152,13 +165,14 @@ public void UserClicksOnCommandbar(string option)
 ---
 
 ### Issue 5 — Hard `waits for 'N' secs` mixed with dynamic waits
-**Area:** Features &nbsp;|&nbsp; **Priority:** Medium
+**Area:** Features &nbsp;|&nbsp; **Priority:** High *(escalated from Medium)* &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
 | **What** | Fixed-duration sleeps are used alongside proper condition-based waits |
 | **Where** | All `.feature` files |
 | **Why it matters** | Hard sleeps add fixed time to every run regardless of application state; they slow the suite on fast machines and cause flakiness on slow ones |
+| **VM context** | RDP introduces network latency between the user's laptop and the VM, and the application itself runs over the network from the VM. Both layers add timing variability that hard sleeps cannot account for — a 5-second wait that works reliably on VM1 with a fast connection may consistently time out on VM3 with a slower one. This is why priority has been escalated from Medium to High. |
 
 | Hard sleep (bad) | Dynamic wait (good) |
 |---|---|
@@ -166,12 +180,12 @@ public void UserClicksOnCommandbar(string option)
 | `And user waits for '5' secs` | `And user waits till 'Saving...' progressbar disappears` |
 | `And user waits for '2' secs` | `And User waits till ProgressRing disappears` |
 
-**Recommendation:** Replace every `waits for 'N' secs` with a polling wait on a visible UI condition. Where no condition exists, investigate why the test needs to pause — usually it signals a missing wait condition in the page object.
+**Recommendation:** Replace every `waits for 'N' secs` with a polling wait on a visible UI condition. Where no visible condition exists, investigate why the test needs to pause — it usually signals a missing wait condition in the page object.
 
 ---
 
 ### Issue 6 — Micro step files with 2–3 methods each
-**Area:** Steps &nbsp;|&nbsp; **Priority:** Medium
+**Area:** Steps &nbsp;|&nbsp; **Priority:** Medium &nbsp;|&nbsp; **Status:** Open
 
 | File | Methods | Lines | Recommendation |
 |---|---|---|---|
@@ -185,7 +199,7 @@ Files with genuine domain cohesion and meaningful size (e.g., `EstateFileSteps.c
 ---
 
 ### Issue 7 — Commented-out steps accumulating in feature files
-**Area:** Features &nbsp;|&nbsp; **Priority:** Low
+**Area:** Features &nbsp;|&nbsp; **Priority:** Low &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -208,7 +222,7 @@ Files with genuine domain cohesion and meaningful size (e.g., `EstateFileSteps.c
 ---
 
 ### Issue 8 — Scenario names embed ticket IDs
-**Area:** Features &nbsp;|&nbsp; **Priority:** Low
+**Area:** Features &nbsp;|&nbsp; **Priority:** Low &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -230,7 +244,7 @@ Scenario: CTBT integration for new property individual with large file upload
 ---
 
 ### Issue 9 — `CommonPage` instantiated inside every step body
-**Area:** Steps &nbsp;|&nbsp; **Priority:** Low
+**Area:** Steps &nbsp;|&nbsp; **Priority:** Low &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -248,7 +262,7 @@ public void GivenUserValidatesCorrespondenceLink()
 }
 ```
 
-**After — single field, injected once:**
+**After — single field, instantiated once:**
 ```csharp
 public class CommonSteps : BasePage
 {
@@ -263,7 +277,7 @@ public class CommonSteps : BasePage
 ---
 
 ### Issue 10 — Assertions written as `Given`/`And` instead of `Then`
-**Area:** Features &nbsp;|&nbsp; **Priority:** Low
+**Area:** Features &nbsp;|&nbsp; **Priority:** Low &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
@@ -280,17 +294,80 @@ public class CommonSteps : BasePage
 
 ---
 
+### Issue 11 — `testThreadCount: 2` conflicted with the 10-user execution model
+**Area:** Config &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Resolved
+
+| | Detail |
+|---|---|
+| **What** | `reqnroll.json` had `testThreadCount: 2`, spinning up two test threads within a single user session |
+| **Where** | `reqnroll.json` |
+| **Why it mattered** | With two threads on the same user account, both point to the same browser profile directory — Chromium-based browsers lock the profile on launch, so the second thread crashes or silently falls back to a temp profile |
+| **VM context** | The team's parallelism is already handled by splitting tests across 10 users on 5 VMs. In-process threading adds no benefit and introduces profile-locking conflicts |
+| **Resolution** | `parallelExecution` block removed from `reqnroll.json` — Reqnroll defaults to single-threaded execution |
+
+**Before:**
+```json
+{
+  "parallelExecution": {
+    "testThreadCount": 2
+  }
+}
+```
+
+**After:**
+```json
+{
+}
+```
+
+---
+
+### Issue 12 — Process-killing in `BeforeScenario` targeted all user sessions on the VM
+**Area:** Hooks &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Resolved
+
+| | Detail |
+|---|---|
+| **What** | `CloseExistingChromeInstances()` and `CloseExistingEdgeInstances()` called `Process.GetProcessesByName()` before every scenario |
+| **Where** | `Hooks.cs` — `BeforeScenario` |
+| **Why it mattered** | `Process.GetProcessesByName()` on Windows returns all matching processes on the machine regardless of which user session owns them. With 2 users on the same VM, User A starting a test run would kill User B's browser that is actively mid-test in their own RDP session |
+| **Resolution** | Both methods and all calls removed from `Hooks.cs`. `DriverDispose()` in `AfterScenario` already handles cleanup of the current session's browser cleanly |
+
+**Before:**
+```csharp
+[BeforeScenario("UI")]
+public void BeforeScenario()
+{
+    CloseExistingEdgeInstances();   // kills ALL msedge on the machine
+    Driver = DriverInitiation();
+    ...
+}
+```
+
+**After:**
+```csharp
+[BeforeScenario("UI")]
+public void BeforeScenario()
+{
+    DriverHelper.Driver = DriverHelper.DriverInitiation();
+    scenarioTest = extentTest.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
+}
+```
+
+---
+
 ## Recommended Implementation Order
 
-| Order | Issue | Effort | Impact |
-|---|---|---|---|
-| 1 | Issue 2 — Standardise wait step spelling | Low | High — fixes silent duplicate bindings immediately |
-| 2 | Issue 4 — Collapse duplicate `Given`/`When` step definitions | Low | Medium — reduces CommonSteps size |
-| 3 | Issue 6 — Merge micro step files | Low | Medium — reduces file noise |
-| 4 | Issue 7 — Delete commented-out steps | Low | Low — improves readability |
-| 5 | Issue 8 — Rename scenarios (remove ticket IDs) | Low | Low — improves report readability |
-| 6 | Issue 3 — Add `Background:` blocks to feature files | Medium | High — removes repetition across all features |
-| 7 | Issue 5 — Replace hard sleeps with dynamic waits | Medium | High — improves run speed and stability |
-| 8 | Issue 9 — Promote `CommonPage` to a field | Medium | Low — minor cleanup |
-| 9 | Issue 10 — Fix `Given`/`Then` keyword misuse | Medium | Low — improves readability |
-| 10 | Issue 1 — Remove `PDF_Utility` from step methods | High | High — biggest noise reduction, do last once PDF strategy is decided |
+| Order | Issue | Effort | Impact | Status |
+|---|---|---|---|---|
+| — | Issue 11 — Remove `testThreadCount` from `reqnroll.json` | Low | High | Resolved |
+| — | Issue 12 — Remove process-killing from `BeforeScenario` | Low | High | Resolved |
+| 1 | Issue 2 — Standardise wait step spelling | Low | High — fixes silent duplicate bindings immediately | Open |
+| 2 | Issue 4 — Collapse duplicate `Given`/`When` step definitions | Low | Medium — reduces CommonSteps size | Open |
+| 3 | Issue 6 — Merge micro step files | Low | Medium — reduces file noise | Open |
+| 4 | Issue 5 — Replace hard sleeps with dynamic waits | Medium | High — critical for consistent results across VMs with varying network latency | Open |
+| 5 | Issue 7 — Delete commented-out steps | Low | Low — improves readability | Open |
+| 6 | Issue 8 — Rename scenarios (remove ticket IDs) | Low | Low — improves report readability | Open |
+| 7 | Issue 3 — Add `Background:` blocks to feature files | Medium | High — removes repetition across all features | Open |
+| 8 | Issue 9 — Promote `CommonPage` to a field | Medium | Low — minor cleanup | Open |
+| 9 | Issue 10 — Fix `Given`/`Then` keyword misuse | Medium | Low — improves readability | Open |
+| 10 | Issue 1 — Remove `PDF_Utility` from step methods | High | High — biggest noise reduction, do last once PDF evidence strategy is confirmed | Open |
