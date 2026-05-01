@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
 using Reqnroll;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -189,6 +190,22 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                 {
                     Driver.Quit();
                     Driver = null;
+                }
+            }
+            catch { }
+        }
+
+        public static void DismissSignInPopupIfPresent()
+        {
+            try
+            {
+                var signInButton = Driver?.FindElements(
+                    By.XPath("//button[normalize-space()='Sign in'] | //input[@value='Sign in']"));
+
+                if (signInButton != null && signInButton.Count > 0 && signInButton[0].Displayed)
+                {
+                    signInButton[0].Click();
+                    Log.Information("Sign in popup detected and dismissed");
                 }
             }
             catch { }

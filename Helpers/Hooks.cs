@@ -79,6 +79,12 @@ namespace POMSeleniumFrameworkPoc1.Helpers
             Log.CloseAndFlush();
         }
 
+        [BeforeStep]
+        public void BeforeStep()
+        {
+            DriverHelper.DismissSignInPopupIfPresent();
+        }
+
         [AfterStep]
         public static void AfterStep()
         {
