@@ -1,25 +1,25 @@
-name: $(Date:yyyyMMdd)$(Rev:.r)_${{ parameters.Environment }}Regression_Tests
+name: $(Date:yyyyMMdd)$(Rev:.r)_FATRegression_Tests
 parameters:
 - name: Environment_val
-  type: string 
+  type: string
   default: Category=SIT_Smoke
   values:
-   - Category=FAT_Smoke
-   - Category=SIT_Smoke
-   - Category=UAT_Smoke
-   - Category=PPE_Smoke
-   - Category=MO_Smoke
-   - Category=TRN_Smoke
+  - Category=FAT_Smoke
+  - Category=SIT_Smoke
+  - Category=PPE_Smoke
+  - Category=TRN_Smoke
+  - Category=HP_E2E
+  - Category=Regression
 - name: Environment
   type: string
   default: SIT
   values:
-    - FAT
-    - SIT
-    - UAT
-    - PPE
-    - MO
-    - TRN
+  - FAT
+  - SIT
+  - UAT
+  - PPE
+  - MO
+  - TRN
 - name: solution
   type: string
   default: '**\*.sln'
@@ -32,64 +32,63 @@ parameters:
 - name: testRunTitle
   type: string
   default: 'Acceptance Test Run'
-
 stages:
 - stage: RunRegressionExecution
   jobs:
-  - job : RunRegressionExecution
+  - job: RunRegressionExecution
     timeoutInMinutes: 1100
     pool:
       name: VOA-TESTTEAM-AUTOMATION
-      
+      demands:
+      - Agent.Name -equals C190VOAsvrTEST2
     displayName: Run Regression Execution
-
-    variables: 
-    - group: D365_${{ parameters.Environment }}_Regression
-    
+    variables:
+    - group: D365_FAT_Regression
     steps:
-    - checkout: "git://BST D365/QA Test Automation@CT_ReqNRoll_Migration"
-
+    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+      inputs:
+        repository: "git://BST D365/QA Test Automation@CT_ReqNRoll_Migration"
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
         command: 'restore'
-        restoreSolution: '${{ parameters.solution }}'
+        restoreSolution: '**\*.sln'
         feedsToUse: 'select'
         noCache: true
-
-    - powershell: |
-        $sourceARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
-        $targetARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
-        Write-Host "((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath"
-        ((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath
-        az login --username '$(username)' --password '$(password)' --allow-no-subscriptions
+    - task: PowerShell@2
       displayName: 'PowerShell Script'
-
+      inputs:
+        targetType: inline
+        script: |
+          $sourceARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
+          $targetARMPath = '$(System.DefaultWorkingDirectory)/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/App.config'
+          Write-Host "((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath"
+          ((Get-Content -path $sourceARMPath -Raw) -replace '<add key="EnvironmentVal" value="SIT"/>' ,'<add key="EnvironmentVal" value="$(Environment)"/>') | Set-Content -Path $targetARMPath
+          az login --username '$(username)' --password '$(password)' --allow-no-subscriptions
     - task: VSBuild@1
       displayName: 'Build solution'
       inputs:
-        solution: '${{ parameters.solution }}'
-        platform: '${{ parameters.BuildPlatform }}'
-        configuration: '${{ parameters.BuildConfiguration }}'
-
+        solution: '**\*.sln'
+        platform: Any CPU
+        configuration: release
     - task: VSTest@2
       displayName: 'Test Assemblies'
       inputs:
         testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\${{ parameters.BuildConfiguration }}\**.dll
+        testAssemblyVer2: >
+          **\release\**.dll
+
           !**\obj\**
         searchFolder: '$(System.DefaultWorkingDirectory)'
-        testFiltercriteria: '${{ parameters.Environment_val }}'
+        testFiltercriteria: Category=FAT_Smoke
         runOnlyImpactedTests: false
         runInParallel: true
-        platform: '${{ parameters.BuildPlatform }}'
-        configuration: '${{ parameters.BuildConfiguration }}'
+        platform: Any CPU
+        configuration: release
         rerunFailedTests: true
         rerunType: 'basedOnTestFailureCount'
       timeoutInMinutes: 1100
       continueOnError: true
-
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
       inputs:
@@ -98,11 +97,9 @@ stages:
         searchFolder: '$(Pipeline.Workspace)/s/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/TestResults'
         mergeTestResults: true
         failTaskOnFailedTests: true
-
     - task: CopyFiles@2
       displayName: 'Copy Files'
       inputs:
         SourceFolder: '$(Pipeline.Workspace)/s/CTAzureAutomationRepo/BSTVOAQAAutomation/BSTVOAQAAutomation/TestResults/'
         Contents: '*Report.html'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      
