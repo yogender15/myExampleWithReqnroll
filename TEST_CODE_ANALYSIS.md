@@ -19,7 +19,7 @@
 
 | # | Area | Issue | Files Affected | Priority | Status |
 |---|---|---|---|---|---|
-| 1 | Steps | `PDF_Utility` try-catch block copy-pasted into every step method | All step files | High | Open |
+| 1 | Steps | `PDF_Utility` try-catch block duplicated in every step method — PDF is the primary report tool, consolidation needed not removal | All step files | High | Open |
 | 2 | Steps | Three different spellings of the same wait step create three separate bindings | `CommonSteps.cs` + all `.feature` files | High | Open |
 | 3 | Features | No `Background:` blocks — identical setup steps repeated in every scenario | All `.feature` files | High | Open |
 | 4 | Steps | Duplicate step definitions for identical actions (`Given`/`When` same text, same body) | `CommonSteps.cs` | Medium | Open |
@@ -31,6 +31,7 @@
 | 10 | Features | Assertions written as `Given`/`And` instead of `Then` | All `.feature` files | Low | Open |
 | 11 | Config | `testThreadCount: 2` in `reqnroll.json` conflicted with the 10-user execution model | `reqnroll.json` | High | **Resolved** |
 | 12 | Hooks | Process-killing in `BeforeScenario` targeted all sessions on the VM — would kill second user's browser | `Hooks.cs` | High | **Resolved** |
+| 13 | Hooks | ExtentReports infrastructure generates `Report.html` that the team does not use — PDF files are the only report consumed | `Hooks.cs` | Medium | Open |
 
 ---
 
@@ -38,39 +39,67 @@
 
 ---
 
-### Issue 1 — `PDF_Utility` try-catch block copy-pasted into every step method
+### Issue 1 — `PDF_Utility` try-catch block duplicated in every step method
 **Area:** Steps &nbsp;|&nbsp; **Priority:** High &nbsp;|&nbsp; **Status:** Open
 
 | | Detail |
 |---|---|
-| **What** | Every step method in every step file wraps its body in an identical try-catch block that instantiates `PDF_Utility` twice — once on success, once on failure |
+| **What** | Every step method wraps its body in an identical try-catch block that instantiates `PDF_Utility` twice — once on success, once on failure |
 | **Where** | `CommonSteps.cs`, `LoginSteps.cs`, `RequestSteps.cs`, and all other step files — hundreds of occurrences |
-| **Why it matters** | Duplicates ~8 lines per method; the failure screenshot is already captured by `AfterStep` in `Hooks.cs` via Extent Reports, making the catch-block screenshot redundant |
-| **Recommendation** | Remove `PDF_Utility` from all step methods; centralise in `AfterStep` if the PDF evidence trail is still needed |
+| **Important context** | PDF is the team's **primary evidence and reporting tool** — the team views PDF files in the TestResults folder, not the ExtentReports HTML. `PDF_Utility` must be kept and working. The problem is duplication, not the tool itself. |
+| **Why it matters** | ~8 identical lines per method duplicated hundreds of times; `takeScreenshot()` on success and on failure serve different purposes but both belong in a central hook, not per step |
+| **Recommendation** | Consolidate into `[AfterStep]` hook — one call covers all steps automatically. Keep `exceptionPdFLogger` in catch blocks only where specific exception detail adds diagnostic value beyond the screenshot |
 
-**Before — repeated in every step method:**
+**What each PDF_Utility call does — and where it should live:**
+
+| Call | Purpose | Where it should live |
+|---|---|---|
+| `pdf_Util.takeScreenshot()` in try block | Captures page state after successful step — builds the evidence PDF | Move to `[AfterStep]` hook — fires automatically after every step |
+| `pdf_Util.takeScreenshot()` in catch block | Captures page state at point of failure | Move to `[AfterStep]` hook — fires on failure too |
+| `pdf_Util.exceptionPdFLogger(e)` in catch block | Logs the exception detail into the PDF | Keep in catch blocks where specific exception context is needed |
+
+**Before — 8 lines duplicated in every step method:**
 ```csharp
-try
+[Given(@"User navigates to '(.*)' under '(.*)'")]
+public void GivenUserNavigatesTo(string menuItem, string section)
 {
-    DoSomething();
-    var pdf_Util = new PDF_Utility();
-    pdf_Util.takeScreenshot();
-}
-catch (Exception e)
-{
-    var pdf_Util = new PDF_Utility();
-    pdf_Util.takeScreenshot();
-    pdf_Util.exceptionPdFLogger(e);
-    throw new Exception("Exception details : " + e.Message);
+    try
+    {
+        NavigateToMenuItem(section, menuItem);
+        var pdf_Util = new PDF_Utility();
+        pdf_Util.takeScreenshot();              // success screenshot
+    }
+    catch (Exception e)
+    {
+        var pdf_Util = new PDF_Utility();
+        pdf_Util.takeScreenshot();              // failure screenshot
+        pdf_Util.exceptionPdFLogger(e);         // exception detail
+        throw new Exception("Exception details : " + e.Message);
+    }
 }
 ```
 
-**After — clean step body:**
+**After — step method contains only its action:**
 ```csharp
 [Given(@"User navigates to '(.*)' under '(.*)'")]
 public void GivenUserNavigatesTo(string menuItem, string section)
 {
     NavigateToMenuItem(section, menuItem);
+}
+```
+
+**AfterStep hook handles screenshot for all steps centrally:**
+```csharp
+[AfterStep]
+public void AfterStep()
+{
+    var pdf_Util = new PDF_Utility();
+    pdf_Util.takeScreenshot();   // fires after every step — success and failure
+
+    if (_scenarioContext.TestError != null)
+    {
+        pdf_Util.exceptionPdFLogger(_scenarioContext.TestError);
+    }
 }
 ```
 
@@ -355,6 +384,59 @@ public void BeforeScenario()
 
 ---
 
+### Issue 13 — ExtentReports infrastructure generates an unused HTML report
+**Area:** Hooks &nbsp;|&nbsp; **Priority:** Medium &nbsp;|&nbsp; **Status:** Open
+
+| | Detail |
+|---|---|
+| **What** | The entire ExtentReports infrastructure in `Hooks.cs` generates `TestResults/Report.html` on every run |
+| **Where** | `Hooks.cs` — `BeforeTestRun`, `BeforeFeature`, `BeforeScenario`, `AfterStep`, `AfterTestRun` |
+| **Important context** | The team's primary evidence trail is PDF files generated by `PDF_Utility`. The `Report.html` is not viewed or used. Every step currently logs to both PDF (useful) and ExtentReports (unused). |
+| **Why it matters** | Dead code runs on every single step — the entire `AfterStep` switch statement (40 lines) writes to an HTML report nobody reads. The static fields `extent`, `extentTest`, `scenarioTest` add shared-state risk for no benefit. The ExtentReports NuGet package adds dependency weight for zero return. |
+| **Recommendation** | Confirm with the team that `Report.html` is not used by anyone (including pipeline or stakeholders). Once confirmed, remove all ExtentReports code from `Hooks.cs` and uninstall the `ExtentReports` NuGet package. |
+
+**Dead code in `Hooks.cs` that can be removed once confirmed unused:**
+
+```csharp
+// Fields — all Extent-related, all removable
+public static ExtentReports extent = new ExtentReports();
+private static ExtentTest extentTest;
+private static ExtentTest scenarioTest;
+public static string testResultsRootPath;
+
+// BeforeTestRun — remove the reporter setup block (keep Serilog and SetBaseUrl)
+var sparkReporter = new ExtentSparkReporter(...);
+sparkReporter.Config.ReportName = "Automation Status Report";
+sparkReporter.Config.DocumentTitle = "Automation Status Report";
+sparkReporter.Config.Theme = Theme.Dark;
+extent.AttachReporter(sparkReporter);
+
+// BeforeFeature — entire body removable (logging line via Serilog can stay)
+extentTest = extent.CreateTest<Feature>(context.FeatureInfo.Title.ToString());
+
+// BeforeScenario — remove scenario node creation
+scenarioTest = extentTest.CreateNode<Scenario>(_scenarioContext.ScenarioInfo.Title);
+
+// AfterStep — entire 40-line switch statement removable
+// (replaced by PDF_Utility consolidation from Issue 1)
+
+// AfterTestRun — remove flush (keep Log.CloseAndFlush)
+extent.Flush();
+```
+
+**NuGet packages that can be uninstalled once ExtentReports is removed:**
+
+| Package | Used for |
+|---|---|
+| `ExtentReports` 5.0.2 | Core reporting library |
+| `AventStack.ExtentReports` | Same package (check for duplicates) |
+
+**Note:** Do not remove until confirmed with the full team. If the pipeline `PublishTestResults`
+task is ever fixed to publish NUnit XML (per the DevOps pipeline fixes document), the Azure
+DevOps Test Results tab will replace the need for a separate HTML report entirely.
+
+---
+
 ## Recommended Implementation Order
 
 | Order | Issue | Effort | Impact | Status |
@@ -370,4 +452,5 @@ public void BeforeScenario()
 | 7 | Issue 3 — Add `Background:` blocks to feature files | Medium | High — removes repetition across all features | Open |
 | 8 | Issue 9 — Promote `CommonPage` to a field | Medium | Low — minor cleanup | Open |
 | 9 | Issue 10 — Fix `Given`/`Then` keyword misuse | Medium | Low — improves readability | Open |
-| 10 | Issue 1 — Remove `PDF_Utility` from step methods | High | High — biggest noise reduction, do last once PDF evidence strategy is confirmed | Open |
+| 10 | Issue 13 — Confirm ExtentReports is unused then remove from `Hooks.cs` | Low | Medium — simplifies Hooks.cs, removes dead step logging, removes unused NuGet package | Open |
+| 11 | Issue 1 — Consolidate `PDF_Utility` into `AfterStep` hook | High | High — biggest noise reduction across all step files; PDF evidence is preserved and centralised | Open |
