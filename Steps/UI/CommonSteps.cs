@@ -79,15 +79,8 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
         }
 
         [Given(@"User clicks on '(.*)' on the commandbar")]
-        public void GivenUserClicksOnOnTheCommandbar(string commandBarOption)
-        {
-            ClickCommandBarOption(commandBarOption);
-        }
-
-
-
         [When(@"User clicks on '(.*)' on the commandbar")]
-        public void GivenTheUserClicksOnOnTheCommandbar(string commandBarOption)
+        public void UserClicksOnCommandbar(string commandBarOption)
         {
             ClickCommandBarOption(commandBarOption);
         }
@@ -4164,6 +4157,20 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
 
 
+        // Merged from CompositePropertyChangeSteps.cs
+        [Given(@"User clicks on the '(.*)' in the PVT tab")]
+        public void GivenUserClicksOnTheInTheTab(string chevronName)
+        {
+            var padEntryPage = new PADEntryPage();
+            padEntryPage.ClickOnChevronOnPVTTab(chevronName);
+        }
+
+        [Given(@"User validates and clicks the '(.*)' and '(.*)' on PVT tablist")]
+        public void GivenUserValidatesAndClicksTheTabPresentOnAndTablist(string tabName, string popUpName)
+        {
+            var padEntryPage = new PADEntryPage();
+            padEntryPage.ValidateAndClickOnTabInPVT(tabName, popUpName);
+        }
     }
 }
 

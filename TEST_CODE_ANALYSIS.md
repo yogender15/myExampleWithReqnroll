@@ -133,8 +133,9 @@ public void AfterStep()
 | **Where** | All `.feature` files |
 | **Why it matters** | Setup intent is buried inside every scenario; adding a new scenario means copy-pasting the setup block; a change to the login step must be made in every scenario |
 
-**Rule:** A step belongs in `Background:` only if it is **identical across every scenario in the feature**.
-Steps whose values vary per scenario must stay inside each scenario.
+**Rule 1:** A step belongs in `Background:` only if it is **identical across every scenario in the feature**.
+
+**Rule 2:** `Background:` steps **always execute first** — before any step in the scenario, with no exceptions. You cannot move a middle or end step to `Background:` while leaving earlier steps in the scenario — it will run out of order.
 
 ---
 
@@ -156,7 +157,7 @@ Scenario: NP02_...
 ```
 
 ```gherkin
-# After — all three steps are identical so all three move to Background:
+# After — all three steps are identical and in sequence, so all three move to Background:
 Background:
     Given User uses test data with ID 'NP_024' from 'NewProperty' sheet
     And User is logged in to Dynamics application to work for "NewProp_E2E_Flow" case
@@ -171,7 +172,7 @@ Scenario: NP02_...
 
 ---
 
-**Case B — Test data ID or case name varies per scenario → only the truly shared step goes to `Background:`**
+**Case B — Test data ID or case name varies per scenario → `Background:` cannot be used**
 
 ```gherkin
 # Before
@@ -188,11 +189,24 @@ Scenario: NP06_...
     ...
 ```
 
-```gherkin
-# After — only the step that is truly the same for every scenario goes to Background:
-Background:
-    And User collapse if site map navigation expanded on left pane
+Moving only `User collapse if site map navigation` to `Background:` would be wrong — `Background:` always runs first, before any scenario steps. The collapse step would execute before the browser is launched and before login, which would cause an immediate failure.
 
+Since steps 1 and 2 vary per scenario and step 3 depends on steps 1 and 2 having run first, **nothing can be moved to `Background:` in this case**.
+
+The correct fix for Case B is to absorb the collapse nav call inside the login page object so it becomes part of login automatically — removing it from every feature file without needing `Background:`:
+
+```csharp
+// LoginPage.cs — collapse nav absorbed into login, removed from all feature files
+public void loginToApp(string baseUrl, string userRole, string caseName)
+{
+    GoToLoginPage(baseUrl);
+    LoginWithExistingUser(userRole);
+    CollapseNavIfExpanded();   // runs automatically as part of login
+}
+```
+
+```gherkin
+# After — step 3 disappears from all scenarios because it now runs inside loginToApp()
 Scenario: NP01_...
     Given User uses test data with ID 'NP_024' from 'NewProperty' sheet
     And User is logged in to Dynamics application to work for "NewProp_CTBT_Integration" case

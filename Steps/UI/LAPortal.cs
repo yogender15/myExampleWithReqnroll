@@ -292,5 +292,19 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             lAPortalDashboardPage.UserSelectsThePlanningPortalReference(testData);
         }
 
+        // Merged from PartDemolitionSteps.cs
+        [When(@"I select an option ""(.*)"" in the Why does the property not have a planning portal reference page")]
+        public void WhenISelectAnOptionInTheWhyDoesThePropertyNotHaveAPlanningPortalReferencePage(string option)
+        {
+            var lAPortalDashboardPage = new LAPortalDashboardPage();
+            lAPortalDashboardPage.SelectWasBuiltWithoutPlanningPermissionRadioBtn();
+        }
+
+        [Then(@"I should see error message as ""(.*)"" on property not have a planning portal reference page")]
+        public void ThenIShouldSeeErrorMessageAsOnPropertyNotHaveAPlanningPortalReferencePage(string errorMessage)
+        {
+            var lAPortalDashboardPage = new LAPortalDashboardPage();
+            Assert.IsTrue(lAPortalDashboardPage.IsSingleReportConfirmationMessageIsDisplayed(errorMessage), "Single Report Confirmation Message Is not Displayed");
+        }
     }
 }

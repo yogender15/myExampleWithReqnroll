@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using POMSeleniumFrameworkPoc1.DTO;
 using POMSeleniumFrameworkPoc1.DTO.UI;
+using POMSeleniumFrameworkPoc1.Pages;
 using POMSeleniumFrameworkPoc1.Pages.UI.RBSP_BP;
 using Reqnroll;
 using System;
@@ -159,8 +160,33 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             enquiriesPage.PickEffectiveDateOnEnquiriesPage(days);
         }
 
+        [When(@"I click the Enquiries tab")]
+        public void WhenIClickTheEnquiriesTab()
+        {
+            var jobPage = new Pages.JobPage();
+            jobPage.ClickEnquiriesTabOnJobsPage();
+        }
 
+        [When(@"I click New Enquiries button")]
+        public void WhenIClickNewEnquiriesButton()
+        {
+            var jobPage = new Pages.JobPage();
+            jobPage.ClickNewEnquiriesBtnUnderEnquiriesTab();
+        }
 
+        [When(@"I click Informal Challenge tab on Enquiries Page")]
+        public void WhenIClickInformalChallengeTabOnEnquiriesPage()
+        {
+            var informalChallengePage = new InformalChallengePage();
+            informalChallengePage.ClickInformalChallengeTabUnderEnquiries();
+        }
+
+        [When(@"I search for the property on Informal Challenge page as ""(.*)""")]
+        public void WhenISearchForThePropertyOnInformalChallengePageAs(string property)
+        {
+            var informalChallengePage = new InformalChallengePage();
+            informalChallengePage.ClickInformalChallengeTabUnderEnquiries();
+        }
     }
 }
 

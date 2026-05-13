@@ -25,21 +25,21 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                 var headers = GetHeaders(worksheet);
                 var row = FindRowByColumnValue(worksheet, headers, "TestDataID", testCaseID);
 
-                // Bug fix: use loop index directly instead of IndexOf
-                // IndexOf always returns the first occurrence — wrong column if duplicates exist
-                for (int colIndex = 0; colIndex < headers.Count; colIndex++)
+                int col = 0;
+                foreach (var header in headers)
                 {
-                    var header = headers[colIndex];
-                    var columnIndex = colIndex + 1;
-                    var cellValue = worksheet.Cells[row, columnIndex].Value?.ToString();
-                    try
-                    {
-                        testData.Add(header, cellValue);
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception($"Exception while adding {header}");
-                    }
+                    col++;
+
+                    // Skip blank header columns (empty cells between populated columns in Excel)
+                    if (string.IsNullOrWhiteSpace(header))
+                        continue;
+
+                    // Skip duplicate header names — first occurrence wins
+                    if (testData.ContainsKey(header))
+                        continue;
+
+                    var cellValue = worksheet.Cells[row, col].Value?.ToString();
+                    testData.Add(header, cellValue);
                 }
             }
             return testData;
@@ -90,12 +90,18 @@ namespace POMSeleniumFrameworkPoc1.Helpers
                 var row = FindRowByColumnValue(worksheet, headers, "TestDataID", testCaseID);
                 var testData = new Dictionary<string, string>();
 
-                // Bug fix: use loop index directly instead of IndexOf
-                for (int colIndex = 0; colIndex < headers.Count; colIndex++)
+                int col = 0;
+                foreach (var header in headers)
                 {
-                    var header = headers[colIndex];
-                    var columnIndex = colIndex + 1;
-                    var cellValue = worksheet.Cells[row, columnIndex].Value?.ToString();
+                    col++;
+
+                    if (string.IsNullOrWhiteSpace(header))
+                        continue;
+
+                    if (testData.ContainsKey(header))
+                        continue;
+
+                    var cellValue = worksheet.Cells[row, col].Value?.ToString();
                     testData.Add(header, cellValue);
                 }
 

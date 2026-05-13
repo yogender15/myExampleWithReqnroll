@@ -35,9 +35,16 @@
 
 ---
 
+### Phase 3 — Execution model alignment
+
+| Area | Before | After | Why |
+|---|---|---|---|
+| `reqnroll.json` | `testThreadCount: 2` — two threads per user session | `parallelExecution` block removed — single-threaded per user | Parallelism is handled by the 10-user split across 5 VMs (2 users each via RDP); in-process threading on the same machine would cause both threads to fight over the same browser profile and could also kill the second user's browser via process-killing |
+
+---
+
 ## Known Deferred Items
 
 | Item | Reason deferred |
 |---|---|
-| `static` fields (`Driver`, `extentTest`, `scenarioTest`) conflict with `testThreadCount: 2` in `reqnroll.json` | Parallel-execution refactor is a larger piece of work; fields need to become `[ThreadStatic]` or scenario-scoped before parallel runs are enabled |
 | `ScenarioContext.Current` in static `AfterStep` method | Static hooks cannot receive injected context; fixing requires converting `AfterStep` to an instance method, which is a broader structural change |
