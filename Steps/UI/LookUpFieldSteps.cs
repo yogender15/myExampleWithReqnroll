@@ -41,14 +41,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 //FillAndSelectLookUpResult(fieldName, testData);
                 _featureContext[fieldName] = testData;
                 SeleniumExtensions.lookUpFieldBasedOnText(fieldName, value, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -59,14 +55,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = value;
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeysBySearchIcon(value, fieldName, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -77,14 +69,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = value;
                 SeleniumExtensions.lookUpFieldBasedOnTextWithKeyPad(fieldName, value, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -100,17 +88,12 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = testData[tdValue];
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, _featureContext, 60);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
                 var testData = inputoutputdata.testData;
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, testData);
                 _featureContext[fieldName] = testData[fieldName];
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
             }
         }
 
@@ -123,14 +106,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = value;
                 SeleniumExtensions.lookUpFieldBasedOnExactText(fieldName, value, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -142,14 +121,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = value;
                 FillAndSelectLookUpResult(fieldName, value);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -160,14 +135,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 _featureContext[fieldName] = fieldValue;
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeysBySearchIcon(fieldValue, fieldName, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -180,14 +151,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = testData[fieldName];
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeysBySearchIcon(fieldName, testData, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -199,17 +166,12 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = (String)_featureContext[featureFieldName];
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, (String)_featureContext[featureFieldName], 60);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
                 var testData = inputoutputdata.testData;
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, testData);
                 _featureContext[fieldName] = testData[fieldName];
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
             }
         }
 
@@ -225,17 +187,12 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 //FillAndSelectLookUpResult(fieldName, testData);
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, testData, 20);
                 //SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeys_New(fieldName, testData, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
                 var testData = inputoutputdata.testData;
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, testData);
                 _featureContext[fieldName] = testData[fieldName];
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
             }
 
         }
@@ -251,14 +208,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     testData = (string)_scenarioContext[fieldName];//"Newcastle-upon-Tyne - 07/12/2024 19:06";//
                 }
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeys_Storage(fieldName, testData, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -271,14 +224,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 //FillAndSelectLookUpResult(fieldName, testData);
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeys_New(position, fieldName, testData, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -291,14 +240,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 FillAndSelectLookUpResult(fieldName, testData);
                 //SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeys_New(fieldName, testData, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -309,14 +254,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 FillAndSelectLookUpResultWhenDataNotEntered(fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -331,9 +272,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -347,9 +286,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User validate {string} is not mandatory")]
@@ -360,14 +297,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 CommonPage.lockedfield(fieldname);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -384,9 +317,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 

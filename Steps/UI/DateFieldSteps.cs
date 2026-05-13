@@ -29,14 +29,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 _featureContext[fieldName] = SeleniumExtensions.enterBeforeDateSequentially(numberOfDays, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -46,14 +42,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 _featureContext[fieldName] = SeleniumExtensions.enterAfterDateSequentially(numberOfDays, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -64,14 +56,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 try
                 {
                     SeleniumExtensions.enterDateSequentially(fieldName, sheetName, testDataRow);
-                    var pdf_Util = new PDF_Utility();
-                    pdf_Util.takeScreenshot();
                 }
                 catch (Exception e)
                 {
-                    var pdf_Util = new PDF_Utility();
-                    pdf_Util.takeScreenshot();
-                    pdf_Util.exceptionPdFLogger(e);
+                    throw;
                 }
             }
         }
@@ -82,14 +70,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 _featureContext[fieldName] = SeleniumExtensions.enterBeforeDateToGoLegeslativeDateSequentially(noDays, BaseProposedEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -101,14 +85,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[fieldName] = SeleniumExtensions.enterBeforeCalenderDateSameAsEffectiveDate(numberOfDays, hereditamentEffectiveDate, fieldName, roleType);
                 //SeleniumExtensions.enterBeforeCalenderDateSequentially(numberOfDays, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"User entered (.*) days before from calender for '(.*)' field value on '(.*)'")]
@@ -120,14 +100,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 String value = _futureDate.ToString("M/d/yyyy");
                 _featureContext[fieldName] = SeleniumExtensions.enterAfterCalenderDateSameAsEffectiveDate(numberOfDays, value, fieldName, roleType);
                 //SeleniumExtensions.enterBeforeCalenderDateSequentially(numberOfDays, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -150,14 +126,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
                 _featureContext[fieldName] = SeleniumExtensions.enterAfterCalenderDateSameAsEffectiveDate(numberOfDays, hereditamentEffectiveDate, fieldName, roleType);
                 //SeleniumExtensions.enterBeforeCalenderDateSequentially(numberOfDays, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -168,14 +140,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String PEDate = (string)_featureContext[proposedEffectiveDate];
                 SeleniumExtensions.enterBeforeCalenderDateSequentially(PEDate, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -187,14 +155,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.enterBeforeCalenderDateSequentially(numberOfDays, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -206,14 +170,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.enterBeforeDateSequentially(numberOfDays, fieldName, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -224,14 +184,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[fieldName] = SeleniumExtensions.enterBeforeDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User enters {string} days before hereditament {string} for {string} field value as {string}")]
@@ -241,14 +197,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[proposedEffectiveDateofEDC] = SeleniumExtensions.enterBeforeDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User enters {string} days after hereditament {string} for {string} field value as {string}")]
@@ -258,14 +210,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[proposedEffectiveDateofdeletion] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -276,14 +224,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[proposedEffectiveDateofEDC] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -295,14 +239,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[fieldName] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(hereditamentEffectiveDate, fieldName, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -315,14 +255,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
                 _featureContext[fieldName] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -332,14 +268,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 String hereditamentEffectiveDate = (string)_featureContext[hereditamentDate];
-                _featureContext[jobType + "_" + fieldName] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName); var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
+                _featureContext[jobType + "_" + fieldName] = SeleniumExtensions.enterAfterDateOfHereditamentEffectiveDateSequentially(numberOfDays, hereditamentEffectiveDate, fieldName);
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -349,14 +282,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.clearAndEnterBeforeTime(fieldAriaLabel, timeInMin);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -367,14 +296,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.clearAndEnterTime(fieldAriaLabel, timeInMin);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -384,14 +309,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 _featureContext[fieldName] = SeleniumExtensions.enterBeforeDateSequentially(numberOfDays, fieldName, elePosition);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 

@@ -32,14 +32,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = testData[fieldName];
                 SeleniumExtensions.sendKeysFieldValue(fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -52,14 +48,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = testData[fieldName];
                 SeleniumExtensions.sendKeysFieldValue(position, fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -84,14 +76,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 enterDataWhenDataNotEntered(fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -103,14 +91,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysRandomFieldValue(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
 
@@ -123,14 +107,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 string value = (string)_featureContext["ba_reference_new"];
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysFieldValue(fieldName, value);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -141,14 +121,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 string value = (string)_featureContext["ba_reference"];
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysFieldValue_sameref(fieldName, value);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -159,14 +135,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 string value = (string)_featureContext["ba_reference"];
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysFieldValue_secondref(fieldName, value);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -179,14 +151,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysRandomFieldValue(fieldName, position);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -198,14 +166,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var value = SeleniumExtensions.sendKeysCommunityFieldValue(BA,town,fieldName);
                 _featureContext[fieldName] = value;
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -219,14 +183,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var value = SeleniumExtensions.sendKeysCommunityFieldValue(fieldName);
                 _featureContext[fieldName] = value;
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -238,14 +198,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysRandomFieldValue(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -257,14 +213,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 _featureContext[fieldName] = SeleniumExtensions.sendKeysRandomFieldValue_BAref(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -277,14 +229,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 SeleniumExtensions.sendKeysTextAreaFieldValue(fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -295,14 +243,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.enterCaseworkerConclusionsRemarksThoughtProcessData();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -317,14 +261,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.sendKeysFieldValue(fieldName, sheetName, RowID);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -335,14 +275,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 SeleniumExtensions.enterDateSequentially(fieldName, testData[fieldName]);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }

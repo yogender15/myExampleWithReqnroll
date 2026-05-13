@@ -52,14 +52,10 @@ namespace POMSeleniumFrameworkPoc1.Steps
                     loginPage.LoginWithExistingUser();
                 }
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -87,8 +83,6 @@ namespace POMSeleniumFrameworkPoc1.Steps
             {
                 loginPage.LoginWithExistingUser();
             }
-            PDF_Utility pdf_util = new PDF_Utility();
-            pdf_util.initializeScreenshotsFile(caseName);
         }
 
 
@@ -450,14 +444,10 @@ namespace POMSeleniumFrameworkPoc1.Steps
             {
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 Assert.IsTrue(lAPortalDashboardPage.IsSingleReportConfirmationMessageIsDisplayed(submittedMessage), "You have successfully submitted your report to the Valuation Office Agency message is not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }

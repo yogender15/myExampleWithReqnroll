@@ -320,15 +320,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var estateFilePage = new EstateFilePage();
                 SeleniumExtensions.ScrollToheading(Headingname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -495,9 +491,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -509,14 +503,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var estateFilePage = new EstateFilePage();
                 estateFilePage.ValidateCTBTIntegrationForEstateFileExtent(expTitle);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -529,14 +519,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var estateFilePage = new EstateFilePage();
                 estateFilePage.ValidateCTBTIntegrationForEstateFile(expTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -717,14 +703,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     testData = (string)_scenarioContext[fieldName];//"Newcastle-upon-Tyne - 07/12/2024 19:06";//
                 }
                 SeleniumExtensions.openEstateFile(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -743,14 +725,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                         estateFile.isCorrespondenceLinkDisplayed(linkName, btnName);
                         break;
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -776,14 +754,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToCheckBoxAndClick(plotType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -793,14 +767,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnContainsLabelAndClick(fieldName, sectioName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
        

@@ -66,14 +66,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 NavigateToMenuItem(sectionName, menuItem);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -102,9 +98,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -115,15 +109,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 ProgressJourney(buttonName, jorneyHeader);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
-                throw new Exception("Exception details : " + e.Message);
+                throw;
             }
         }
 
@@ -158,10 +147,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
-                throw new Exception("Exception details : " + e.Message);
+                throw;
             }
         }
 
@@ -172,14 +158,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 Assert.IsTrue(SeleniumExtensions.validateFieldWithValueOnly(value).Displayed);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -190,14 +172,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 waitUntillStageIsSelected(stageName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -650,14 +628,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndClick_New(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -668,14 +642,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage CP = new CommonPage();
                 CP.searchbutton();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -686,14 +656,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 By selector = SeleniumExtensions.getLocator($"//*[@aria-label='{sectionName}']//button[contains(@aria-label,'{buttonName}')]");
                 SeleniumExtensions.scrollToBtnEleBasedOnLabelAndClick(selector);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -705,8 +671,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndClick(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
@@ -721,9 +685,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 }
                 catch (Exception ex)
                 {
-                    var pdf_Util = new PDF_Utility();
-                    pdf_Util.takeScreenshot();
-                    pdf_Util.exceptionPdFLogger(e);
                 }
             }
 
@@ -759,14 +720,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 try
                 {
                     SeleniumExtensions.scrollToBtnBasedOnLabelAndClick_recon(fieldName);
-                    var pdf_Util = new PDF_Utility();
-                    pdf_Util.takeScreenshot();
                 }
                 catch (Exception e)
                 {
-                    var pdf_Util = new PDF_Utility();
-                    pdf_Util.takeScreenshot();
-                    pdf_Util.exceptionPdFLogger(e);
+                    throw;
                 }
             }
         }
@@ -779,14 +736,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndClick(fieldName, sectioName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -806,14 +759,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndClickOnHereditamentDialog(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -825,14 +774,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndClick(fieldName, position);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -846,14 +791,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 SeleniumExtensions.WaitForReadyStateToComplete();
                 SeleniumExtensions.scrollToBtnBasedOnLabelAndJSClick(fieldName);
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
 
@@ -889,9 +830,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -909,9 +848,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -921,14 +858,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 Assert.IsTrue(SeleniumExtensions.validate_FieldWithValue(value, fieldName).Displayed);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -939,14 +872,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 Assert.IsTrue(SeleniumExtensions.validateFieldWithValue_(value, fieldName));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -957,14 +886,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 Assert.IsTrue(SeleniumExtensions.validateFieldWithValue(valuefield, fieldName, _featureContext).Displayed);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -985,14 +910,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     Assert.IsTrue(commonpage.assertStatus(status, level));
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1012,14 +933,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickButtonOnDialog(buttonName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1042,14 +959,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Supplementary Job Name"] = jobdetails;
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1071,14 +984,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Supplementary Job Name"] = suplimentoryJob;
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1102,14 +1011,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Supplementary Job Name"] = jobdetails;
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
 
@@ -1132,14 +1037,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Supplementary Job Name"] = jobdetails;
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1152,14 +1053,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 RequestPage rp = new RequestPage();
                 Dictionary<String, String> jobdetails = rp.UserCaptureAllJobNames(numberOfJobs, jobID, jobName, _featureContext, RefreshBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1172,14 +1069,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 RequestPage rp = new RequestPage();
                 Dictionary<String, String> jobdetails = rp.UserCaptureAllJobDetails_New(numberOfJobs, jobID, jobName, _featureContext, RefreshBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1191,14 +1084,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 RequestPage rp = new RequestPage();
                 Dictionary<String, String> jobdetails = rp.UserWaitsTillAllJobNamesDisplay(numberOfJobs, RefreshBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1211,14 +1100,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 RequestPage rp = new RequestPage();
                 Dictionary<String, String> jobdetails = rp.UserCaptureAllJobDetails(numberOfJobs, jobID, jobName, _featureContext, RefreshBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1230,14 +1115,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 RequestPage rp = new RequestPage();
                 Dictionary<String, String> jobdetails = rp.UserCapturedAllJobDetails(numberOfJobs, jobID, jobName, _featureContext, RefreshBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1272,14 +1153,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     _featureContext[jobID] = jobdetails[jobID];
                 }
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1307,14 +1184,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                         _featureContext[jobName] = jobdetails[jobName];
 
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
 
@@ -1337,14 +1210,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     _featureContext[fieldName] = estateFileDetails[fieldName];
                     Debug.WriteLine("Estate File Name : " + _scenarioContext[fieldName]);
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1367,14 +1236,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Correspondence" + jobID] = jobdetails["Correspondence" + jobID];
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1389,14 +1254,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var requestPage = new RequestPage();
                 requestPage.clickOnCorrespondenceJobID();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1408,14 +1269,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillSpinnerDisaddpears();
                 Thread.Sleep(2000);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1427,14 +1284,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 waitHelpers wh = new waitHelpers();
                 String eleLoc = $"//textarea[@aria-label='{fieldName}' and contains(text(),'{msg}')]";
                 Assert.IsTrue(wh.isElementDisplayed(By.XPath(eleLoc), 60));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1448,14 +1301,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 //commonpage.waitTillSavingDisaddpears(label, roleType);
                 commonpage.waitTillSavingDisaddpears();
                 Thread.Sleep(2000);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1467,14 +1316,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillSavingDisaddpearswithnocheck(label, roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1487,14 +1332,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillSavingDisaddpearsDialog(label);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1507,14 +1348,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillRecordSaved(label);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1541,14 +1378,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillappProgressIndicatorDisaddpears_();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1559,14 +1392,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillappProgressIndicatorDisaddpears_();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1579,14 +1408,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillunlockstageProgressIndicatorDisaddpears(labelName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1600,14 +1425,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillSpinnerDisable();
                 //waitTillappProgressIndicatorDisaddpears();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1620,14 +1441,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillFindHeridetamentDisaddpears();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1639,14 +1456,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillDialogDisaddpears(roleType);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1669,10 +1482,8 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
-                throw new Exception("Exception details : " + e.Message);
+
+                throw;
             }
         }
         [Given(@"User closed '(.*)' dialog if still present")]
@@ -1696,9 +1507,8 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+
+                throw;
             }
         }
 
@@ -1724,9 +1534,8 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+
+                throw;
             }
         }
 
@@ -1738,14 +1547,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.waitTillProgressBarDisaddpears();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1765,14 +1570,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     Assert.IsTrue(businessStageDetails.Contains(fieldName));
                 }
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1803,14 +1604,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 //commonpage.clickOnDataResearchFormTab(tabName, researchForm);
                 commonpage.clickOnTab_proposal(tabName, researchForm);
                 SeleniumExtensions.WaitForPageLoad();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1822,14 +1619,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 SeleniumExtensions.WaitForPageLoad();
                 CommonPage commonpage = new CommonPage();
                 commonpage.validateOutboundCorrespondanceTemplate(templateName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User click on {string} tab")]
@@ -1853,14 +1646,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 string Milovalue = null;
                 Milovalue = (string)_scenarioContext["MiloID"];
                 commonpage.validateandunlink(Milovalue, _scenarioContext, buttonname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1880,9 +1669,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1898,9 +1685,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User selects {string} record row")]
@@ -1910,14 +1695,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.selectHereditemetStatusRecord_Milo(heridetementStatus);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1929,14 +1710,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 _featureContext[Modifiedband] = commonpage.selectassessment(Status, Assessment);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1957,14 +1734,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickEleOnDialog(position, btnName, DialogTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -1976,14 +1749,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickEleOnDialog(btnName, DialogTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -1996,14 +1765,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickEleOnconfirmDialog(buttonText);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2015,14 +1780,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickconfirmbutton(btnName, DialogTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2036,14 +1797,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickEleOnDialogIfappears(btnName, DialogTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2056,14 +1813,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.switchToAssessmentFrame();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2075,14 +1828,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.getRowCount() > rowSize);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2093,14 +1842,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 MaintainAssessmentPage map = new MaintainAssessmentPage();
                 map.validatedAssessmentwelsh(_featureContext, table);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"User asserts below '(.*)' details")]
@@ -2120,9 +1865,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
             //foreach (var row in table.Rows)
             //{
@@ -2155,9 +1898,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2170,14 +1911,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.getRowCount() == rowSize);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2189,14 +1926,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.getJobIdRowCount() == rowSize);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2208,16 +1941,12 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.assertAssosiatedJobs(rowSize, refreshBtn));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickEleOnDialog("OK", "Error");
                 Assert.IsTrue(commonpage.assertAssosiatedJobs(rowSize, refreshBtn));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
                 // pdf_Util.exceptionPdFLogger(e);
             }
         }
@@ -2228,14 +1957,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.assertProposedBAReference(rowSize, refreshBtn));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2247,14 +1972,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.assertRelatedJobs(rowSize, refreshBtn));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2288,8 +2009,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
         {
             CommonPage cp = new CommonPage();
             cp.validateFieldValue(fieldName, condition);
-            var pdf_Util = new PDF_Utility();
-            pdf_Util.takeScreenshot();
         }
 
         [Given(@"User switchs to deafult frame")]
@@ -2305,14 +2024,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var bpfPage = new BPFPage();
                 bpfPage.closeBPFcontainerIfStillOpen();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2324,14 +2039,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var bpfPage = new BPFPage();
                 bpfPage.closeBPFcontainer();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2344,14 +2055,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.isStageSelected(buttonName, stageName);
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2364,14 +2071,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.isTabDisplayed(buttonName, tabName);
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2383,14 +2086,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.isFieldStatusDislayed(buttonName, fieldName, status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("verify status reason as {string} in the property link page")]
@@ -2400,14 +2099,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.userValidatestatus(status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2419,14 +2114,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.isStatusDisplayed(buttonName, status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2437,14 +2128,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.isSucceedingRequestDisplayed(buttonName, succeedingRequest);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2456,14 +2143,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.isStatusDisplayed_new(refreshBtn, btnName, DialogTitle, status);
                 //commonpage.clickEleOnDialog(btnName, DialogTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2507,14 +2190,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
                 _featureContext["Current Tax Band"] = currentTaxBand;
                 _featureContext["Proposed Tax Band"] = proposedBand;
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2528,14 +2207,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.currentbandcomparison(Modifiedband, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2547,14 +2222,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.billingautoritycheck(fieldName, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2575,14 +2246,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 commonpage.EnterDataInSingleCharLookUpField(fieldName, proposedBand);
                 _featureContext["Current Tax Band"] = currentTaxBand;
                 _featureContext["Proposed Tax Band"] = proposedBand;
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2624,14 +2291,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 }
                 //SeleniumExtensions.scrollToBtnElement(fieldName);
                 commonpage.clickOnFieldNameLink(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2642,14 +2305,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickOnFieldNameLink(assesment);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2661,14 +2320,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickOnlinkname(linkname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2679,14 +2334,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.clickOnlistitems(Listitems);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2704,9 +2355,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2747,14 +2396,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     SeleniumExtensions.setFieldValue(fieldName, testData);
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -2766,14 +2411,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 SeleniumExtensions.enterDataOnDocumentDialog(fieldName, testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2785,14 +2426,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var testData = inputoutputdata.testData;
                 SeleniumExtensions.enterDateSequentiallyOnDialog(fieldName, testData[fieldName]);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2839,14 +2476,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                         break;
                 } while (!countmatched);
                 Assert.IsTrue(!statusDetails.Contains(statusName));
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2876,14 +2509,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     Assert.IsTrue(statusDetails.Contains(statusName));
                 }
                 SeleniumExtensions.WaitForReadyStateToComplete();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2921,14 +2550,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 Console.WriteLine("effectiveFromDate : " + effectiveFromDate);
                 Console.WriteLine("effectiveToDate : " + effectiveToDate);
                 commonpage.validateRecordsForDataEnhancement(effectiveFromDate, effectiveToDate, padType, table);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2940,14 +2565,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var cp = new CommonPage();
                 cp.clickOnSubTab(subTabName, mainTabName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2958,14 +2579,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var requestPage = new RequestPage();
                 requestPage.clickOnMsgJobID();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -2993,14 +2610,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     dataContains = msg.Contains((string)_featureContext[expectedMsgKey]);
                     Assert.True(dataContains);
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3013,14 +2626,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 string msg = (string)_featureContext[msgName];
                 bool dataContains = msg.Contains(expectedMsg);
                 Assert.True(dataContains);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3041,14 +2650,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 {
                     _featureContext["Quadient Message"] = jobdetails[fieldName];
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3059,14 +2664,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userupdateacceptancedecision(fieldValue, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3077,14 +2678,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userupdatejobtype(fieldValue, fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3095,14 +2692,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.updateJobOwner();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3113,14 +2706,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.updatenewlinkedassessment();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3153,14 +2742,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.StatusDisplayed(buttonName, status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3246,14 +2831,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     colName = "Job Name";
                 }
                 commonpage.assignJobFromAllJobs(colName, jobName, btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3266,14 +2847,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext["Supplementary Job Name"];//jobName
                 commonpage.assignJobFromAllJobs(colName, jobName, btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3285,14 +2862,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[jobTitle];//jobName
                 commonpage.assignJobFromAllJobs(colName, jobName, btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3304,14 +2877,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[jobTitle];//jobName
                 commonpage.childjobstatus(colName, jobName, expectedStatus);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"User filters recon job '(.*)' '(.*)' through '(.*)'")]
@@ -3322,14 +2891,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[jobkey];//jobName
                 commonpage.filterJobFromAllJobs(colName, jobName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -3341,14 +2906,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobNameLatest = (string)_featureContext[jobName];//jobName
                 commonpage.filterJobFromAllJobs(colName, jobNameLatest);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3362,14 +2923,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[colName];//jobName
                 commonpage.filterJobFromAllJobs(colName, jobName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3381,14 +2938,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[jobtitle];//jobName
                 commonpage.filterJobFromAllJobs(colName, jobName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -3404,14 +2957,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 string jobName = (string)_featureContext[requestName];//requestName
                 commonpage.openRequestFromCTrequest(jobName, colName, filetrName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3425,9 +2974,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User clicks on the  {string} dropdown and filters {string}")]
@@ -3440,9 +2987,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3457,9 +3002,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3474,14 +3017,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 Milovalue = (string)_scenarioContext["MiloID"];
                 commonpage.filtermilorecord(colName, Milovalue);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3501,14 +3040,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     jobName = (string)_featureContext[colName];//jobName
                 }
                 commonpage.assignJobFromAllJobs(colName, jobName, btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User {string} {string} through {string} for abort case")]
@@ -3520,14 +3055,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 string jobName = null;
                 jobName = (string)_featureContext["Job ID"];//jobId
                 commonpage.assignJobFromAllJobs_abort(colName, jobName, btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3538,14 +3069,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.pickJob(colName, filterBy, pickBtn);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -3560,14 +3087,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 clickOnMainMenuMoreElement_New(assignBtn);
                 //clickOnMainMenuMoreElement_Latest(assignBtn);
                 cp.clickEleOnDialog(assignBtn, popupTitle);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3617,14 +3140,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userDoubleClickRow();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"user clicked on the '(.*)' button element")]
@@ -3634,14 +3153,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.clickOnBtnEleclose(btnLabel);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3652,14 +3167,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.clickOnBtnEle(btnLabel);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3674,14 +3185,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 String newValue = "Vishal";
                 cp.userModifiesFieldValue(loc1, loc2);
                 SeleniumExtensions.ScrollUntilSelectorDisplayedAndSendKeys_New(fieldName, newValue, 120);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"user validated '(.*)' contains text")]
@@ -3691,14 +3198,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userValidateContainsText(text);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given(@"User verifies '(.*)' Banner message")]
@@ -3708,14 +3211,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userValidatebannernotification(text);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3727,14 +3226,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userValidateText_new(text);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3746,14 +3241,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userClickOnJobUnderAssociatedJobs(jobtype);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3764,14 +3255,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userClickOnfileuploadrow(rowname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3783,14 +3270,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage cp = new CommonPage();
                 cp.userClickonpropertylink(fieldname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -3804,14 +3287,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var timestamp = DateTimeOffset.Now.ToString("yyyyMMddHHmmssffff");
                 SeleniumExtensions.sendKeysFieldValue(fieldName, timestamp);
                 _scenarioContext[fieldName] = timestamp;
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3841,14 +3320,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage CPF = new CommonPage();
                 CPF.collapseNavIfItIsOpen();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3859,14 +3334,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage CPF = new CommonPage();
                 CPF.expandnewrecord(newrecord);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -3879,14 +3350,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage CPF = new CommonPage();
                 CPF.CR10NotificationMsgValidate(msg);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3897,14 +3364,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage CPF = new CommonPage();
                 CPF.clickOnLabel(labelName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3967,9 +3430,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3980,14 +3441,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.scrollToBtnBasedOnLabelClick(fieldName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -3997,14 +3454,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.validateSLAKPIStatus(KPI_Name, status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -4015,14 +3468,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 Assert.IsTrue(commonpage.getRowCount_correspondence() == rowSize);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -4035,14 +3484,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.selectassessment_EDC(Status, Action);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User asserts Property Link table")]
@@ -4052,14 +3497,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 MaintainAssessmentPage map = new MaintainAssessmentPage();
                 map.validatepropertylinktable(_featureContext, Table);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
        
@@ -4073,14 +3514,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 CommonPage commonpage = new CommonPage();
                 commonpage.selectlinkedAssesment(Assessment);
 
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -4092,14 +3529,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.openRecord();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -4110,14 +3543,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 CommonPage commonpage = new CommonPage();
                 commonpage.navigateToSucceedingRequest();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -4141,14 +3570,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                     //    $"Mismatch for field '{fieldName}'. Expected: {expectedDate:dd/MM/yyyy}, Actual: {actualDate:dd/MM/yyyy}"
                     //);
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 

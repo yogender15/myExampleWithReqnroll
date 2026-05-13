@@ -60,14 +60,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                         SeleniumExtensions.clickElementAndSelectText(fieldName, fieldValue);
                     }
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -79,14 +75,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 SeleniumExtensions.scrollToBtnElement(fieldName);
                 SeleniumExtensions.clickElementAndSelectText(fieldName, fieldValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -97,14 +89,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 SeleniumExtensions.scrollToBtnElement(fieldName);
                 SeleniumExtensions.SelectElementByText(fieldName, fieldValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -114,14 +102,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             try
             {
                 SeleniumExtensions.NoActionSelectElementByText(fieldName, fieldValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
     }

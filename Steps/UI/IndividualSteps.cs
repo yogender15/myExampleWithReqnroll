@@ -344,14 +344,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.Clickeditdetailsoption(fieldname);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception ex)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(ex);
+                throw;
             }
 
         }
@@ -366,14 +362,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.SelectValueFromDocumentDropdownOnDIalog(dropdownOption, dropdownName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -385,14 +377,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.ClickonButtonOnDocumentDialog(buttonName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -404,14 +392,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.UploadDocumentOnDialog(buttonName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
 
@@ -424,14 +408,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.UploadDocumentOnDialog(buttonName, fileNmae);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -443,14 +423,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.ValidateDocUploadStatus();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -461,14 +437,10 @@ the View Selector to '(.*)'")]
             {
                 var individualJobPage = new IndividualJobPage();
                 individualJobPage.ValidateDocUpdatestatus();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -735,14 +707,10 @@ the View Selector to '(.*)'")]
                 {
                     SeleniumExtensions.setFieldValue(fieldName, testData);
                 }
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }

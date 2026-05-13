@@ -45,8 +45,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 wh.clickOnElement(By.CssSelector("a[class='govuk-button govuk-button--start']"));
                 loginPage.loginToApp_LAPortal("VOA Team Manager1");
             }
-            PDF_Utility pdf_util = new PDF_Utility();
-            pdf_util.initializeScreenshotsFile(pdfFileName);
         }
 
 
@@ -76,14 +74,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.ClickCreateSingleReportLink();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -95,14 +89,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.SelectReasonCodeOnLAPortal(reasonCode);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -139,14 +129,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.EnterContactDataForLAPortalReq(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -159,14 +145,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.EnterEffectiveDateAndRemarksLAPortal(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -179,14 +161,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.EnterPostCodeAndSelectAddress(_featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -199,14 +177,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.EnterPostCodeAndSelectAddress(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -219,14 +193,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.SelectValuesForPlanningPortalRef(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -239,14 +209,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var lAPortalDashboardPage = new LAPortalDashboardPage();
                 lAPortalDashboardPage.EnterReferencesDataForCR03LAPortalReq(testData);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }

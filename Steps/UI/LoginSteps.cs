@@ -21,14 +21,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 Console.WriteLine($"Encrypted password : " + s);
                 String des = passwordEncryptor.Decrypt(s);
                 Console.WriteLine($"Decrypted password : " + des);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -39,14 +35,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 LoginPage loginPage = new LoginPage();
                 loginPage.LogoutFromApp();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -57,14 +49,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 LoginPage loginPage = new LoginPage();
                 loginPage.loginToApp(userRole);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -76,14 +64,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
 
                 LoginPage loginPage = new LoginPage();
                 loginPage.loginToApp(Config.BaseUrl, userRole, pdfFileName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -91,8 +75,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
         [Given(@"User is logged in to Dynamics application to work for ""(.*)"" case")]
         public void GivenUserIsLoggedInToDynamicsApplicationToWorkForCase(string caseName)
         {
-            PDF_Utility pdf_util = new PDF_Utility();
-            pdf_util.initializeScreenshotsFile(caseName);
             var loginPage = new LoginPage();
             loginPage.GoToLoginPage(Config.BaseUrl);
             if (Config.BrowserType.Equals("edge"))
@@ -109,8 +91,6 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
         [Given(@"User closes browser")]
         public void GivenUserClosesBrowser()
         {
-            PDF_Utility pdf_util = new PDF_Utility();
-            pdf_util.finalizeScreenshotsFile();
         }
 
 

@@ -115,14 +115,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 string fieldName = fnArr[0];
                 string fieldValue = (string)_featureContext[fn.ToLower()];
                 commonPage.enterDataInFieldsBasedOnLabel(fieldName, fieldValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -136,14 +132,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var commonPage = new CommonPage();
                 commonPage.enterDataInFieldsBasedOnLabel(fieldName, fc_FieldName, testData, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -155,14 +147,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var commonPage = new CommonPage();
                 commonPage.enterDataInPostCodeField_NewProperty(fieldName, testData, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -176,14 +164,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var testData = inputoutputdata.testData;
                 var commonPage = new CommonPage();
                 commonPage.enterDataInFieldsBasedOnLabel(fieldName, testData, _featureContext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -196,14 +180,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var hereditamentsPage = new HereditamentsPage();
                 hereditamentsPage.selectFirstHeridetamentResult(rowNum);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -214,14 +194,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var hereditamentsPage = new HereditamentsPage();
                 hereditamentsPage.selectFirstPlotResult();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
         [Given("User slects spcific {string} row from search hereditament results for find service address")]
@@ -232,15 +208,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprn_NewProperty(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -253,15 +225,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprn_NewProperty(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -273,15 +241,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentNotByuprn_NewProperty(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -293,15 +257,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprn_NewProperty(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -312,15 +272,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var hereditamentsPage = new HereditamentsPage();
                 hereditamentsPage.selectSearchByDropDown(btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -331,15 +287,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var hereditamentsPage = new HereditamentsPage();
                 hereditamentsPage.selectSearchByDropDown_Milo(btnName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
 
         }
@@ -369,15 +321,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprn(uprnValue, status);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -389,15 +337,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByDeletedUPRN(uprnValue, band);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -411,15 +355,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprn(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -431,15 +371,11 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var hereditamentsPage = new HereditamentsPage();
                 String uprnValue = (string)_featureContext[uprn];
                 hereditamentsPage.selectHeridetamentByuprnWithOutSelect(uprnValue);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
 
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -455,9 +391,7 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
