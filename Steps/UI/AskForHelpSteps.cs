@@ -20,14 +20,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var jobPage = new JobPage();
                 jobPage.ClickActionsTab();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -38,14 +34,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var jobPage = new JobPage();
                 jobPage.ClickCreateATimelineRecordBtn();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -56,14 +48,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickAskForHelpIntimelineRecordElement();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -74,14 +62,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.EnterAskForHelpSubjectText(subject);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -92,14 +76,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.EnterAskForHelpDescriptionText(description);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -110,14 +90,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickAskForHelpSaveAndCloseBtn();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -129,14 +105,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var askForHelpPage = new AskForHelpPage();
                 //  Assert.IsTrue(askForHelpPage.SubjectNotesTextIsVisible("Help needed"), "subject text is not displayed");
                 Assert.IsTrue(askForHelpPage.DescriptionIsVisible("More information needed"), "Description text is not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -148,14 +120,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
                 var askForHelpPage = new AskForHelpPage();
                 //Assert.IsTrue(askForHelpPage.ActivityStatusOpenCloseIsDisplayed(status1), "active/inactive status is not displayed");
                 Assert.IsTrue(askForHelpPage.ActivityStatusTextIsDisplayed(status1), "Open/Close text is not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -166,14 +134,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickRecordOpen();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -184,14 +148,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.IsServiceLevelTitleDisplayed(), "ServiceLevelTitle is not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -202,14 +162,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickAssignIconOrBtn();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -220,14 +176,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.AssignToTeamOrUserHeaderIsDisplayed(), "Assign To Team Or User pop up is not Displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -238,14 +190,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.SelectAssignToDropdown(dropDownText);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -256,14 +204,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.FillUserOrTeamDetails(teamName);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -274,14 +218,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickRecordOpen();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -292,14 +232,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.VerifyAskForHelpOwnerDetails(ownerDetails), "the Ask for help owner details are incorrect");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -310,14 +246,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.SelectCancelAskForHelpRadioBtn();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -328,14 +260,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.EnterReasonForCancellationText("Automation test cancellation");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -346,14 +274,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.VerifyReadOnlyCancellationNotificationIsDisplayed(readOnlyNotificationMessage), "the Ask for help cancellation notication yext message is not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -364,14 +288,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.VerifyActivityStatusText(status), "the activity status is not cancelled");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -382,14 +302,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickAssignBtn();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -400,14 +316,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickEnterAnoteBtnAskForHelpElement();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -418,14 +330,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.EnterTitleInTimeline(title);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -436,14 +344,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.EnterANoteInTimeLine(timelinetext);
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -454,14 +358,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 askForHelpPage.ClickAddNoteBtnTimeline();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -472,14 +372,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var askForHelpPage = new AskForHelpPage();
                 Assert.IsTrue(askForHelpPage.VerifyTimelineNotesTextModifiedIsDisplayed(notes), "the notes in the timeline is incorrect and not displayed");
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 
@@ -490,14 +386,10 @@ namespace POMSeleniumFrameworkPoc1.Steps.UI
             {
                 var jobPage = new JobPage();
                 jobPage.SimpleSave();
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
             }
             catch (Exception e)
             {
-                var pdf_Util = new PDF_Utility();
-                pdf_Util.takeScreenshot();
-                pdf_Util.exceptionPdFLogger(e);
+                throw;
             }
         }
 

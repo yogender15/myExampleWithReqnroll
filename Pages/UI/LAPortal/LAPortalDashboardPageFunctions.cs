@@ -1,5 +1,4 @@
-﻿using AventStack.ExtentReports.Gherkin.Model;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using POMSeleniumFrameworkPoc1.Helpers;
 using Reqnroll;

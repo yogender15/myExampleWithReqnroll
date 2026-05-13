@@ -19,6 +19,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         private static PdfPage page;
         private static XGraphics xg = null;
         private static String screenshotName = "";
+        private static bool _isFinalized = false;
 
 
         XFont font = new XFont("Arial Unicode MS", 20);
@@ -31,6 +32,7 @@ namespace POMSeleniumFrameworkPoc1.Helpers
         public void initializeScreenshotsFile(String scenarioName)
         {
             screenshotName = scenarioName;
+            _isFinalized = false;
             try
             {
                 String currentTimeStamp = getCurrentSystemDate("dd-MM-yyyy_HH-mm");
@@ -147,6 +149,8 @@ namespace POMSeleniumFrameworkPoc1.Helpers
 
         public void finalizeScreenshotsFile()
         {
+            if (_isFinalized) return;
+            _isFinalized = true;
             try
             {
                 document.Save(nameScreenshotsResultsFile + @"\" + screenshotName + @".pdf");
