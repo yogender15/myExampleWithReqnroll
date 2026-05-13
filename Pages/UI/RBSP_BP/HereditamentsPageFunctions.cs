@@ -137,7 +137,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             int rowSize = wh.getAllWebElements(By.CssSelector("div[aria-label='Address search results grid'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
             By uprnBy = By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell'] [data-automation-key='uprn'] div");
             wh.isElementDisplayed(uprnBy, 60);
-            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
             SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             bool uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
             bool nextPageBtnDisplayed = false;
@@ -158,7 +158,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                 }
                 else
                 {
-                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                     nextPageBtnDisplayed = wh.isElementDisplayed(nextPageBtnOnDialog, 20);
                     if (nextPageBtnDisplayed)
                     {
@@ -195,7 +195,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             int rowSize = wh.getAllWebElements(By.CssSelector("div[aria-label='Address search results grid'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
             By uprnBy = By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell'] [data-automation-key='uprn'] div");
             wh.isElementDisplayed(uprnBy, 60);
-            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
             SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             bool uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
             bool nextPageBtnDisplayed = false;
@@ -216,7 +216,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                 }
                 else
                 {
-                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                     nextPageBtnDisplayed = wh.isElementDisplayed(nextPageBtnOnDialog, 20);
                     if (nextPageBtnDisplayed)
                     {
@@ -253,7 +253,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             int rowSize = wh.getAllWebElements(By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
             By uprnBy = By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell'] [data-automation-key='uprn'] div");
             wh.isElementDisplayed(uprnBy, 60);
-            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
             SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             bool nonuprnRowDisplayed = !wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
             bool nextPageBtnDisplayed = false;
@@ -274,7 +274,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                 }
                 else
                 {
-                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                     nextPageBtnDisplayed = wh.isElementDisplayed(nextPageBtnOnDialog, 20);
                     if (nextPageBtnDisplayed)
                     {
@@ -393,7 +393,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             }
             catch (Exception e)
             {
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                 SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             }
 
@@ -425,7 +425,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                     {
                         wh.clickOnElement(nextPageBtnOnDialog);
                         rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
-                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                         wh.isElementDisplayed(uprnBy, waitTime);
                         uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
                         if (uprnRowDisplayed)
@@ -461,15 +461,16 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
         {
             waitHelpers wh = new waitHelpers();
             SeleniumExtensions.scrollToBtnBasedOnLabelAndClick("Select");
-            //int rowSize = wh.getAllWebElements(By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
             int rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
+
+            if (rowSize == 0)
+                throw new Exception($"Find Hereditament search returned no results for UPRN '{uprnValue}' — verify test data exists in this environment.");
+
             By uprnBy = By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell'] [data-automation-key='uprn_column']");
             wh.isElementDisplayed(uprnBy, 60);
-            if (rowSize != 1) { }
-            //SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
-            //SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[last()-1]")));
 
             By UPRNrow = By.XPath($"//div[text()='{uprnValue}']/parent::div[@data-automation-key='uprn_column']");
+            string rowLocator = "(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])";
 
             try
             {
@@ -477,11 +478,10 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             }
             catch (Exception e)
             {
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"{rowLocator}[{Math.Max(1, rowSize - 1)}]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"{rowLocator}[1]")));
             }
 
-            //SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             bool uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
             bool nextPageBtnDisplayed = false;
             By nextPageBtnOnDialog = By.XPath("//*[contains(@class,'ms-Dialog-main')]//button[@title='Next Page']");
@@ -507,7 +507,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                     {
                         wh.clickOnElement(nextPageBtnOnDialog);
                         rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
-                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                         wh.isElementDisplayed(uprnBy, waitTime);
                         uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
                         if (uprnRowDisplayed)
@@ -551,7 +551,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             }
             catch (Exception e)
             {
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                 SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             }
 
@@ -579,7 +579,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                     {
                         wh.clickOnElement(nextPageBtnOnDialog);
                         rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
-                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                         wh.isElementDisplayed(uprnBy, waitTime);
                         uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
                         if (uprnRowDisplayed)
@@ -630,7 +630,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             }
             catch (Exception e)
             {
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                 SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             }
 
@@ -660,7 +660,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                     {
                         wh.clickOnElement(nextPageBtnOnDialog);
                         rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
-                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                         wh.isElementDisplayed(uprnBy, waitTime);
                         uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
                         if (uprnRowDisplayed)
@@ -705,7 +705,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             }
             catch (Exception e)
             {
-                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                 SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             }
 
@@ -735,7 +735,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                     {
                         wh.clickOnElement(nextPageBtnOnDialog);
                         rowSize = wh.getAllWebElements(By.CssSelector("div[class*='ms-Modal-scrollableContent scrollableContent'] div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
-                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                        SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                         wh.isElementDisplayed(uprnBy, waitTime);
                         uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
                         if (uprnRowDisplayed)
@@ -769,7 +769,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
             int rowSize = wh.getAllWebElements(By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell']")).Count;
             By uprnBy = By.CssSelector("div[class='ms-List-page'] div[class='ms-List-cell'] [data-automation-key='uprn'] div");
             wh.isElementDisplayed(uprnBy, 60);
-            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+            SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
             SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[1]")));
             bool uprnRowDisplayed = wh.getAllWebElementsText(uprnBy).Contains(uprnValue);
             bool nextPageBtnDisplayed = false;
@@ -790,7 +790,7 @@ namespace POMSeleniumFrameworkPoc1.Pages.UI.CommonComponents
                 }
                 else
                 {
-                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{rowSize}-1]")));
+                    SeleniumExtensions.ScrollToElement(wh.GetWebElement(By.XPath($"(//div[@class='ms-List-page']//div[@class='ms-List-cell'])[{Math.Max(1, rowSize - 1)}]")));
                     nextPageBtnDisplayed = wh.isElementDisplayed(nextPageBtnOnDialog, 20);
                     if (nextPageBtnDisplayed)
                     {
