@@ -1,0 +1,269 @@
+ DE01_CTPRELMGMT_1607_CTPRELMGMT_1635_E2EDataEnhancement_FullProcessOfAmendingACommittedPADSet
+  No source available
+   Duration: 13.5 min
+
+  Message: 
+OpenQA.Selenium.WebDriverTimeoutException : Timed out after 120 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"xpath","selector":"(//div[contains(@class,'ms-Modal-scrollableContent') and contains(@class,'scrollableContent')]//div[@class='ms-List-page']//div[@class='ms-List-cell'])[0-1]"}
+  (Session info: MicrosoftEdge=148.0.3967.54); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+  Stack Trace: 
+DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+DefaultWait`1.Until[TResult](Func`2 condition, CancellationToken token)
+DefaultWait`1.Until[TResult](Func`2 condition)
+waitHelpers.GetWebElement(By locator) line 39
+HereditamentsPage.selectHeridetamentByuprn(String uprnValue) line 480
+HereditamentsSteps.GivenUserSlectsSpcificRowFromSearchHereditamentResults(String uprn) line 362
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+<InvokeBindingAsync>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+<ExecuteStepMatchAsync>d__60.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+<ExecuteStepMatchAsync>d__60.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+<<ExecuteStepAsync>b__7>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+<<ExecuteStepAsync>g__HandleStepExecutionExceptions|0>d.MoveNext()
+<OnAfterLastStepAsync>d__37.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+<CollectScenarioErrorsAsync>d__15.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+TaskAwaiter.GetResult()
+<ScenarioCleanupAsync>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+TaskAwaiter.GetResult()
+<DE01_CTPRELMGMT_1607_CTPRELMGMT_1635_E2EDataEnhancement_FullProcessOfAmendingACommittedPADSet>d__11.MoveNext() line 119
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+TaskAwaiter`1.GetResult()
+GenericAdapter`1.GetResult()
+AsyncToSyncAdapter.Await(Func`1 invoke)
+TestMethodCommand.RunTestMethod(TestExecutionContext context)
+TestMethodCommand.Execute(TestExecutionContext context)
+<>c__DisplayClass1_0.<Execute>b__0()
+BeforeAndAfterTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+--NoSuchElementException
+WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)
+<ExecuteAsync>d__62.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+ExceptionDispatchInfo.Throw()
+TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+WebDriver.FindElement(String mechanism, String value)
+DefaultWait`1.Until[TResult](Func`2 condition, CancellationToken token)
+
+  Standard Output: 
+[15:24:54 INF] Selecting feature file: DataEnhancement
+userDirectory : C:\Users\7933388UserDirectoryParts : System.String[]userID : 7933388Given User uses test data with ID 'DE_001' from 'DataEnhancement' sheet
+-> done: CommonSteps.GivenUserUsesTestDataWithIDFromSheet("DE_001", "DataEnhancement") (0.7s)
+Given User is logged in to Dynamics application to work for "E2E_Committed_Amend_DE" case
+Page fully loaded.
+userID: 7865772@hmrc.gov.uk
+User landed into DashBoard
+-> done: LoginSteps.GivenUserIsLoggedInToDynamicsApplicationToWorkForCase("E2E_Committed_Ame...") (39.4s)
+And User collapse if site map navigation expanded on left pane
+-> done: CommonSteps.GivenUserCollapseIfSiteMapNavigationExpandedOnLeftPane() (0.2s)
+And User connects to the DB and retrieves the data for 'findHereditament_WestLancashire_DE'
+  --- table step argument ---
+  | fieldName |
+  | uprn      |
+select pl.uprn from ct.banding_assessment a join property.billing_authority_assignment b on a.du_id = b.du_id  join shared.billing_authority ac on b.ba_id = ac.ba_id  join property.du_label pl on a.du_id = pl.du_id join ct.band bn on bn.band_id = a.band_id where bn.band in ('B','C','D','E','F','G','H','I') and a.is_composite='false' and a.name not like '%Deleted%' and a.name like '%Current (live entry)%' and ac.ba_code in ('2365') and pl.uprn is not null and a.effective_from_date>='2005-05-01' GROUP BY pl.uprn HAVING COUNT(*) = 1 ORDER BY RANDOM() LIMIT 1;
+userDirectory : C:\Users\7933388UserDirectoryParts : System.String[]userID : 7933388Azure Access Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilh0LW83aERicHVwQXotWlBtNkh4Q0ZXUzNjSSIsImtpZCI6Ilh0LW83aERicHVwQXotWlBtNkh4Q0ZXUzNjSSJ9.eyJhdWQiOiJodHRwczovL29zc3JkYm1zLWFhZC5kYXRhYmFzZS53aW5kb3dzLm5ldCIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjNTJmNzNjLWZkMWEtNGE5YS04ZTdhLTRhMjQ4ZjMxMzllMS8iLCJpYXQiOjE3Nzg2ODU2NDUsIm5iZiI6MTc3ODY4NTY0NSwiZXhwIjoxNzc4NjkxMTM1LCJhY3IiOiIxIiwiYWlvIjoiQVVRQXUvOGNBQUFBMXlaekNJMGFMWHJiZUE5SDFINWRFRTB0NjVySUZ3L09CQndaRXpNNzdkblAzajE3NVNwWXNWN0VvUTVWM3c4WENQcEdQNXpYcytZcmVnOXlkQ25zREE9PSIsImFtciI6WyJwd2QiLCJyc2EiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJkZXZpY2VpZCI6IjI3M2JkMjk3LThjNjMtNGE5Mi1iZWEzLWUwMTNkN2E3ZjljMiIsImZhbWlseV9uYW1lIjoiTXVtbWlkaSBQcmFrYXNoIiwiZ2l2ZW5fbmFtZSI6IllvZ2VuZGVyIiwiZ3JvdXBzIjpbIjI5MTUxMjBkLTM3MDYtNGFmYi1iOGZkLTNlNjFhZjIxZjA1ZSIsImFlZjllNzEzLTg2ZWUtNDhjMC1hYWIyLTExMWE5ZmQ2MTA5NSIsImIyNGY5NjE1LTVkZjMtNDExNy05MDU4LTI2M2IxNGRjMDczNiIsIjI3OGMzMDFlLTViZjgtNDA1OS1iYTIyLTM2MzkxNDE1NGUwYiIsIjc2ZjcyYzIxLWI1ZjUtNDhhMC1hYzI1LWU4NjE0ODFmODgzZSIsIjc2ZmFlOTIyLTU5ZTItNDk5NS05ZDlkLTI3NzRiNzllMTkyYSIsIjU3MjMxNjIzLTQwNTgtNDM2ZC05Y2U1LTczNTRjZDcyMGJiNyIsIjVmYjJlNTJiLTUyNjYtNDg0Zi04OWI1LTdkMDUxMTZlYzQ2NyIsImRhYmUzZTMzLWM3MDctNDgxOS05Njg0LWYxY2ZmNDJlMDgxYSIsIjc4Mjg5ODQ2LWY4MWItNDRlOC04ZGM3LTE2ZjdkZWQzODliYyIsImY5YjM4NjU1LWQ0OWQtNDM1Yi05ZDU2LTY1ZWZjY2ZmNjhjYSIsIjQwNGIxZDU4LWQ1ZDUtNGJkYi1hNzZhLTUxMWYyYTVkNmQ3YiIsIjY2NzJiMTVlLTA5MDktNGIwNC04ZTFmLWY5NjIzOGRmMTMxNSIsIjNhODkwMDYxLWQ4N2MtNGY2ZC1hMWI5LTJkMWJjYTE2ZmQ3NyIsImJhNGQwYzY1LTY4MTYtNDEzZi1hNjI0LTkwMTY2NWMwYjMzNSIsImVmYmE3ODc0LWMyNzAtNDEyYi1iOTZiLTdiZjNmMmQzZDVjNCIsIjFiZDM1ZTdhLTYyM2QtNDE4MC1hZTg4LTUwMzhhMDZlNjU2ZCIsImYwOTM1YzdlLTNkZWYtNDhiNy1iNWFkLTYzZTAxYzBjYWM5YSIsImIwMDcyMDg1LTQzMmMtNDJhZi1iNTE5LTY3NzM2ZWUwNDVjYiIsImVjOTA5OThhLWI0MWEtNDEwMy05NWMxLTk2YjJkMzZiNDRlNyIsIjZiMjhhMzhmLTc5NWYtNGY1ZS1hNjFmLTU0ODk5MGIyYjQ5MCIsIjFlMDFlZTk2LTE2ZjEtNGZjOC04ZjU1LTY0YzQ2MGQxMTdhOSIsIjI0MGM0ZWE0LWUyYzQtNDJiMS1iNmQ4LWY5MjRiYTlkNTQ1ZCIsIjZjNzQxZGE2LTRkZDEtNGViNC1iMTE4LWJlNDk5YjA2OWM3OSIsIjE2NDhmM2FiLTcwMGUtNDZjMy1hODAyLTM2YzU5MGRjZDJkOSIsImFmMzczOWJhLWNkZWMtNGViNC04NmM0LTc0MzM3MjI1ZTg1YiIsIjA4NTZhNmJlLTYxOTctNDM3OC04NDcxLWZmYWNmNDIyM2JhOCIsImU3MjhjZmJmLTE1NGItNDlkMy05NTM4LWEwMGNmMzJkY2M1MSIsIjQ1N2MxM2MwLTIxMWEtNGFjMi04ZWJjLTFiZGM3MDYxY2JkZiIsIjYzNjE3Y2MwLTgwMWQtNGU4YS04ZmFhLTc1NDdhNjkzNTMxYiIsImNmYTEzNWMxLWM4NjItNGNkNi04NmNiLTI0OTMyNDhmZGQzNiIsIjQ1MDEwMmNlLTQ4OGEtNGY4NS05ZjQzLTAzYzMyOTgwZjdjZiIsIjM0NWNiNGUzLWQyYzktNDgyZC05ODE5LTJjM2Q4Yjc2YzNjOSIsIjI3NzkwZWU0LTA2YTctNGNiZC1iMmU2LTMwNGE1MzJmNTUwOSIsIjY4NWRjN2U3LTFmMjMtNDExMy05ZDA1LWYwNmJjNzI1ODg1MCIsIjliZWE0MGU4LTU5MjQtNGQ0MC05OWRkLWQyNGYwMmVmYjJlYyIsImM0NzkyN2VjLThhOTUtNDQ3Mi1hYTQwLWJhODc5OGZmNDBmMSIsIjM2M2EzN2YyLWVhYzQtNDMyYS04NjYyLTBlNThkOTRjNDEwOCIsIjcwYzk3Y2YyLTQ2MzYtNDE2Ni1iNGM1LWRmM2IxNzIwMTVkYyIsIjcwMzAyNWZhLWZjMzQtNDRlOC1iNDA5LWI2NDBmNWVmOTY5YSIsImE1NGM5NGZmLWFlODEtNGU1OC1iOGFkLTkyMWFiZTY1MTZlYSJdLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiI1MS4xMS41Ny43NCIsIm5hbWUiOiJNdW1taWRpIFByYWthc2gsIFlvZ2VuZGVyIChDRElPIENvZ25pemFudCBDRFBPIFZPQSkiLCJvaWQiOiI5M2E5YmM3ZS03Njg4LTRhOTQtYmYwOS00ZTI2NDlkZTlhNjMiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjcxNjY3NzA1Ny0yNzY4ODExNTg3LTMyODYxMzc3NTYtMTIyMzU2MCIsInB1aWQiOiIxMDAzMjAwNUFENTkyREJFIiwicmgiOiIxLkFSOEFQUGRTckJyOW1rcU9la29ranpFNTRWRFlQQkxmMmIxQWxOWEo4SHRfb2dNQUFCVWZBQS4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzaWQiOiIwMDQwOTM1YS01YjM3LTFlNTAtMzc2ZC1kMDg2OWNlMzUxZDYiLCJzdWIiOiI3S0IzanExZDJscWZpZUo4SGx4eThhWnZlMjJHNklHblJOeWl1UUY1cllrIiwidGlkIjoiYWM1MmY3M2MtZmQxYS00YTlhLThlN2EtNGEyNDhmMzEzOWUxIiwidW5pcXVlX25hbWUiOiJ5b2dlbmRlci5tdW1taWRpcHJha2FzaEBobXJjLmdvdi51ayIsInVwbiI6InlvZ2VuZGVyLm11bW1pZGlwcmFrYXNoQGhtcmMuZ292LnVrIiwidXRpIjoibm5mWGxTM2gxRUdWU0xuQjRGNGlBQSIsInZlciI6IjEuMCIsInhtc19hY3RfZmN0IjoiMyA1IiwieG1zX2Z0ZCI6IkRTaHBVal9pbGNuX2JFVG5JVmNGbWpkdk5vUEFyYUdXaUY2aDhUWDlIWmtCWlhWeWIzQmxibTl5ZEdndFpITnRjdyIsInhtc19pZHJlbCI6IjEgMTIiLCJ4bXNfc3ViX2ZjdCI6IjQgMyJ9.hwnXEprRAydFIzUd1_JTDNVhQbbbDrbuQ0ypUbgkoQHZUtWk5TLlkhRKayKpwpg-I3hFNnx5MJNed4DE7fZ1GBPkaJILeKtPkep_WxbkcvJ85cDN-_x4kiCzOhLkRIxqfbMGaLuOXLczh-SJ0DB-Sba9KtB0nghOH4X2l9pvBIpnewWdjDiDGNO7CjkCqr-_VePLnhUtm33MoanamW3Od7cFH40DeXqoW0ac8ZFEXLhVsM5nubR-HBMb3mKj-leUIzGTliox1x2WnZO7BGKPtw0t2gg1vu4qc5E6DXnmh3axVnHjM9PDdZ7-CIkPl-F3JE90ugBNzR1KbeTkFNbk4Q
+connectionString : Server=bst-iaz-pgsql-sit-dal.postgres.database.azure.com;Port=5432;User Id=RES-PVDB_DB_User_T1_Test-US;Password=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilh0LW83aERicHVwQXotWlBtNkh4Q0ZXUzNjSSIsImtpZCI6Ilh0LW83aERicHVwQXotWlBtNkh4Q0ZXUzNjSSJ9.eyJhdWQiOiJodHRwczovL29zc3JkYm1zLWFhZC5kYXRhYmFzZS53aW5kb3dzLm5ldCIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2FjNTJmNzNjLWZkMWEtNGE5YS04ZTdhLTRhMjQ4ZjMxMzllMS8iLCJpYXQiOjE3Nzg2ODU2NDUsIm5iZiI6MTc3ODY4NTY0NSwiZXhwIjoxNzc4NjkxMTM1LCJhY3IiOiIxIiwiYWlvIjoiQVVRQXUvOGNBQUFBMXlaekNJMGFMWHJiZUE5SDFINWRFRTB0NjVySUZ3L09CQndaRXpNNzdkblAzajE3NVNwWXNWN0VvUTVWM3c4WENQcEdQNXpYcytZcmVnOXlkQ25zREE9PSIsImFtciI6WyJwd2QiLCJyc2EiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJkZXZpY2VpZCI6IjI3M2JkMjk3LThjNjMtNGE5Mi1iZWEzLWUwMTNkN2E3ZjljMiIsImZhbWlseV9uYW1lIjoiTXVtbWlkaSBQcmFrYXNoIiwiZ2l2ZW5fbmFtZSI6IllvZ2VuZGVyIiwiZ3JvdXBzIjpbIjI5MTUxMjBkLTM3MDYtNGFmYi1iOGZkLTNlNjFhZjIxZjA1ZSIsImFlZjllNzEzLTg2ZWUtNDhjMC1hYWIyLTExMWE5ZmQ2MTA5NSIsImIyNGY5NjE1LTVkZjMtNDExNy05MDU4LTI2M2IxNGRjMDczNiIsIjI3OGMzMDFlLTViZjgtNDA1OS1iYTIyLTM2MzkxNDE1NGUwYiIsIjc2ZjcyYzIxLWI1ZjUtNDhhMC1hYzI1LWU4NjE0ODFmODgzZSIsIjc2ZmFlOTIyLTU5ZTItNDk5NS05ZDlkLTI3NzRiNzllMTkyYSIsIjU3MjMxNjIzLTQwNTgtNDM2ZC05Y2U1LTczNTRjZDcyMGJiNyIsIjVmYjJlNTJiLTUyNjYtNDg0Zi04OWI1LTdkMDUxMTZlYzQ2NyIsImRhYmUzZTMzLWM3MDctNDgxOS05Njg0LWYxY2ZmNDJlMDgxYSIsIjc4Mjg5ODQ2LWY4MWItNDRlOC04ZGM3LTE2ZjdkZWQzODliYyIsImY5YjM4NjU1LWQ0OWQtNDM1Yi05ZDU2LTY1ZWZjY2ZmNjhjYSIsIjQwNGIxZDU4LWQ1ZDUtNGJkYi1hNzZhLTUxMWYyYTVkNmQ3YiIsIjY2NzJiMTVlLTA5MDktNGIwNC04ZTFmLWY5NjIzOGRmMTMxNSIsIjNhODkwMDYxLWQ4N2MtNGY2ZC1hMWI5LTJkMWJjYTE2ZmQ3NyIsImJhNGQwYzY1LTY4MTYtNDEzZi1hNjI0LTkwMTY2NWMwYjMzNSIsImVmYmE3ODc0LWMyNzAtNDEyYi1iOTZiLTdiZjNmMmQzZDVjNCIsIjFiZDM1ZTdhLTYyM2QtNDE4MC1hZTg4LTUwMzhhMDZlNjU2ZCIsImYwOTM1YzdlLTNkZWYtNDhiNy1iNWFkLTYzZTAxYzBjYWM5YSIsImIwMDcyMDg1LTQzMmMtNDJhZi1iNTE5LTY3NzM2ZWUwNDVjYiIsImVjOTA5OThhLWI0MWEtNDEwMy05NWMxLTk2YjJkMzZiNDRlNyIsIjZiMjhhMzhmLTc5NWYtNGY1ZS1hNjFmLTU0ODk5MGIyYjQ5MCIsIjFlMDFlZTk2LTE2ZjEtNGZjOC04ZjU1LTY0YzQ2MGQxMTdhOSIsIjI0MGM0ZWE0LWUyYzQtNDJiMS1iNmQ4LWY5MjRiYTlkNTQ1ZCIsIjZjNzQxZGE2LTRkZDEtNGViNC1iMTE4LWJlNDk5YjA2OWM3OSIsIjE2NDhmM2FiLTcwMGUtNDZjMy1hODAyLTM2YzU5MGRjZDJkOSIsImFmMzczOWJhLWNkZWMtNGViNC04NmM0LTc0MzM3MjI1ZTg1YiIsIjA4NTZhNmJlLTYxOTctNDM3OC04NDcxLWZmYWNmNDIyM2JhOCIsImU3MjhjZmJmLTE1NGItNDlkMy05NTM4LWEwMGNmMzJkY2M1MSIsIjQ1N2MxM2MwLTIxMWEtNGFjMi04ZWJjLTFiZGM3MDYxY2JkZiIsIjYzNjE3Y2MwLTgwMWQtNGU4YS04ZmFhLTc1NDdhNjkzNTMxYiIsImNmYTEzNWMxLWM4NjItNGNkNi04NmNiLTI0OTMyNDhmZGQzNiIsIjQ1MDEwMmNlLTQ4OGEtNGY4NS05ZjQzLTAzYzMyOTgwZjdjZiIsIjM0NWNiNGUzLWQyYzktNDgyZC05ODE5LTJjM2Q4Yjc2YzNjOSIsIjI3NzkwZWU0LTA2YTctNGNiZC1iMmU2LTMwNGE1MzJmNTUwOSIsIjY4NWRjN2U3LTFmMjMtNDExMy05ZDA1LWYwNmJjNzI1ODg1MCIsIjliZWE0MGU4LTU5MjQtNGQ0MC05OWRkLWQyNGYwMmVmYjJlYyIsImM0NzkyN2VjLThhOTUtNDQ3Mi1hYTQwLWJhODc5OGZmNDBmMSIsIjM2M2EzN2YyLWVhYzQtNDMyYS04NjYyLTBlNThkOTRjNDEwOCIsIjcwYzk3Y2YyLTQ2MzYtNDE2Ni1iNGM1LWRmM2IxNzIwMTVkYyIsIjcwMzAyNWZhLWZjMzQtNDRlOC1iNDA5LWI2NDBmNWVmOTY5YSIsImE1NGM5NGZmLWFlODEtNGU1OC1iOGFkLTkyMWFiZTY1MTZlYSJdLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiI1MS4xMS41Ny43NCIsIm5hbWUiOiJNdW1taWRpIFByYWthc2gsIFlvZ2VuZGVyIChDRElPIENvZ25pemFudCBDRFBPIFZPQSkiLCJvaWQiOiI5M2E5YmM3ZS03Njg4LTRhOTQtYmYwOS00ZTI2NDlkZTlhNjMiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjcxNjY3NzA1Ny0yNzY4ODExNTg3LTMyODYxMzc3NTYtMTIyMzU2MCIsInB1aWQiOiIxMDAzMjAwNUFENTkyREJFIiwicmgiOiIxLkFSOEFQUGRTckJyOW1rcU9la29ranpFNTRWRFlQQkxmMmIxQWxOWEo4SHRfb2dNQUFCVWZBQS4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzaWQiOiIwMDQwOTM1YS01YjM3LTFlNTAtMzc2ZC1kMDg2OWNlMzUxZDYiLCJzdWIiOiI3S0IzanExZDJscWZpZUo4SGx4eThhWnZlMjJHNklHblJOeWl1UUY1cllrIiwidGlkIjoiYWM1MmY3M2MtZmQxYS00YTlhLThlN2EtNGEyNDhmMzEzOWUxIiwidW5pcXVlX25hbWUiOiJ5b2dlbmRlci5tdW1taWRpcHJha2FzaEBobXJjLmdvdi51ayIsInVwbiI6InlvZ2VuZGVyLm11bW1pZGlwcmFrYXNoQGhtcmMuZ292LnVrIiwidXRpIjoibm5mWGxTM2gxRUdWU0xuQjRGNGlBQSIsInZlciI6IjEuMCIsInhtc19hY3RfZmN0IjoiMyA1IiwieG1zX2Z0ZCI6IkRTaHBVal9pbGNuX2JFVG5JVmNGbWpkdk5vUEFyYUdXaUY2aDhUWDlIWmtCWlhWeWIzQmxibTl5ZEdndFpITnRjdyIsInhtc19pZHJlbCI6IjEgMTIiLCJ4bXNfc3ViX2ZjdCI6IjQgMyJ9.hwnXEprRAydFIzUd1_JTDNVhQbbbDrbuQ0ypUbgkoQHZUtWk5TLlkhRKayKpwpg-I3hFNnx5MJNed4DE7fZ1GBPkaJILeKtPkep_WxbkcvJ85cDN-_x4kiCzOhLkRIxqfbMGaLuOXLczh-SJ0DB-Sba9KtB0nghOH4X2l9pvBIpnewWdjDiDGNO7CjkCqr-_VePLnhUtm33MoanamW3Od7cFH40DeXqoW0ac8ZFEXLhVsM5nubR-HBMb3mKj-leUIzGTliox1x2WnZO7BGKPtw0t2gg1vu4qc5E6DXnmh3axVnHjM9PDdZ7-CIkPl-F3JE90ugBNzR1KbeTkFNbk4Q;Database=pvdb;
+DB Connected
+[15:25:53 ERR] Npgsql Exception:Column must be between 0 and 0
+Npgsql Exception:Column must be between 0 and 0
+The given key was not present in the dictionary.
+10012355304
+-> done: CommonSteps.GivenUserConnectsToTheDBAndRetrievesTheData("findHereditament_...", <table>) (10.0s)
+Given User click on 'Requests' under 'Service' section
+[15:25:53 INF] User clicked on element 
+-> done: MenuBarAndTabSteps.GivenUserClickOnUnderSection("Requests", "Service") (0.1s)
+And User click on 'New' button from 'menubar'
+-> done: MenuBarAndTabSteps.GivenUserClickOnButtonFrom("New", "menubar") (5.6s)
+And User looked for 'Job Type' field value
+[15:26:07 INF] User clicked on element 
+[15:26:07 INF] The value Data Enhancement was entered for  element
+-> done: LookUpFieldSteps.GivenUserLookedForFieldValue("Job Type") (6.3s)
+And User scroll to 'Billing Authority Link' element
+Page fully loaded.
+Current screensection of application Tab
+-> done: SubmissionSteps.GivenUserScrollToElement("Billing Authority...") (0.3s)
+And User entered 0 days before date for 'Date Received' field value
+Page fully loaded.
+Current screensection of application Tab
+userID : 7933388-> done: DateFieldSteps.GivenUserEnteredDaysBeforeDateForFieldValue(0, "Date Received") (0.7s)
+And User entered 25 days after date for 'Target Date' field value
+Page fully loaded.
+Current screensection of application Tab
+userID : 7933388-> done: DateFieldSteps.GivenUserEnteredDaysAfterDateForFieldValue(25, "Target Date") (0.8s)
+And User enter data for 'Remarks' text area field value
+[15:26:11 INF] User clicked on element 
+[15:26:11 INF] The value Automation Testing was entered for  element
+-> done: InPutFieldSteps.GivenUserEnterDataForTextAreaFieldValue("Remarks") (0.6s)
+And User click on 'Find Hereditament' button
+-> done: SubmissionSteps.GivenUserClickOnButton("Find Hereditament") (1.7s)
+And User select 'UPRN' value from 'Search By' dropdown
+-> done: HereditamentsSteps.GivenUserSelectValueFromDropdown("UPRN", "Search By") (0.3s)
+And User enters data in "UPRN" field
+-> done: HereditamentsSteps.GivenUserEntersDataInField("UPRN") (0.1s)
+And User clicked on 'Search' button
+-> done: CommonSteps.GivenUserClickedOnButton("Search") (1.6s)
+And User slects spcific 'uprn' row from search hereditament results
+-> error: Timed out after 120 seconds (727.8s)
+And User clicked on 'Select' button
+-> skipped because of previous errors
+And User waits till Find Hereditament dialog disappears
+-> skipped because of previous errors
+And User click on 'Save' button from 'menubar'
+-> skipped because of previous errors
+And user waits till 'Saving...' 'progressbar' disappears
+-> skipped because of previous errors
+And User validate 'Validating' status of 'Request'
+-> skipped because of previous errors
+And User clicks on 'Validate Request' under 'Request Action'
+-> skipped because of previous errors
+And User click on 'Save & Close' button from 'dialog'
+-> skipped because of previous errors
+And User waits till 'dialog' disappears
+-> skipped because of previous errors
+And User click on 'Related Jobs' tab from 'Request Form'
+-> skipped because of previous errors
+And User captures "Job ID" and "Job Name" in "scenarioContext" by "Refresh" grid
+-> skipped because of previous errors
+And User click on "Job Id" element
+-> skipped because of previous errors
+And User waits till 'Details' stage selected
+-> skipped because of previous errors
+And User click on 'Refresh' button from 'menubar'
+-> skipped because of previous errors
+And User validate below business stages on business journey header
+  --- table step argument ---
+  | BusinessStages |
+  | Details        |
+  | Researching    |
+-> skipped because of previous errors
+And User clicked on 'Next Stage' for 'Details' journey on the headerbar
+-> skipped because of previous errors
+And User waits till 'Researching' stage selected
+-> skipped because of previous errors
+And User clicked on 'PVT' tab under 'Desktop Research Form'
+-> skipped because of previous errors
+And User selects 'Committed' record
+-> skipped because of previous errors
+And User get PAD attributes of 'Committed' record
+-> skipped because of previous errors
+And User captures "EffectiveFromDate" for "committed" record in "scenarioContext"
+-> skipped because of previous errors
+And User clicked on 'Amend' button
+-> skipped because of previous errors
+And User clicks on 'Continue' button on 'Clone and Amend PADs?' dialog
+-> skipped because of previous errors
+And user waits till app progress indicator disappears
+-> skipped because of previous errors
+And User clicks on 'Save and continue' button on 'Unsaved changes' dialog,if appears
+-> skipped because of previous errors
+And user waits till app progress indicator disappears
+-> skipped because of previous errors
+And User clicked on 'PAD Entry' tab under 'Desktop Research Form'
+-> skipped because of previous errors
+And User enter Property Attributes
+-> skipped because of previous errors
+And User enter data for 'Floors' field value only when data not entered
+-> skipped because of previous errors
+And User enter data for 'Level' field value only when data not entered
+-> skipped because of previous errors
+And User looked for 'Conservatory Type' field value only when data not entered
+-> skipped because of previous errors
+And User enter data for 'Conservatory Area' field value only when data not entered
+-> skipped because of previous errors
+And User click on 'Save' button from 'menubar'
+-> skipped because of previous errors
+And user wait till 'Saving...' 'progressbar' disappears
+-> skipped because of previous errors
+And User clicked on 'Add New Source Code' button
+-> skipped because of previous errors
+And User looked for 'Source Code' field value
+-> skipped because of previous errors
+And User enter data for 'Comment' field value
+-> skipped because of previous errors
+And User click on 'Save & Close' button from 'menubar'
+-> skipped because of previous errors
+And User scroll to 'PAD Validation' element
+-> skipped because of previous errors
+And User click on 'Validate PAD Code' toggle button
+-> skipped because of previous errors
+And User click on 'Save' button from 'menubar'
+-> skipped because of previous errors
+And user wait till 'Saving...' 'progressbar' disappears
+-> skipped because of previous errors
+And User validate value 'Pass' for 'PAD Validation Outcome' field
+-> skipped because of previous errors
+And User click on 'Save' button from 'menubar'
+-> skipped because of previous errors
+And user waits till 'Saving...' 'progressbar' disappears
+-> skipped because of previous errors
+And User clicked on 'Check Facts' tab under 'Desktop Research Form'
+-> skipped because of previous errors
+And User clicks on 'Is Desktop Research Complete?' dropdown and select 'Yes' value
+-> skipped because of previous errors
+And User clicks on 'Yes' button on 'Complete Job' dialog
+-> skipped because of previous errors
+And user waits till progress indicator disappears
+-> skipped because of previous errors
+And user waits till 'Saving...' 'progressbar' disappears
+-> skipped because of previous errors
+And User click on job link in Header
+-> skipped because of previous errors
+And User click on 'Refresh' button from 'menubar' untill 'Pending Release' status display
+-> skipped because of previous errors
+And User clicked on 'Details' tab under 'Job Form'
+-> skipped because of previous errors
+And User click on 'Request' link
+-> skipped because of previous errors
+And User clicks on 'Release and Publish' under 'Request Action'
+-> skipped because of previous errors
+And User clicks on 'OK' button element
+-> skipped because of previous errors
+And User closes dialog if still present
+-> skipped because of previous errors
+And User click on 'Refresh' button from 'menubar' untill 'Resolved' status display
+-> skipped because of previous errors
+And User clicked on 'Details' tab under 'Job Form'
+-> skipped because of previous errors
+And User scroll to 'Hereditament Details' element
+-> skipped because of previous errors
+And User click on 'Hereditament' link
+-> skipped because of previous errors
+And User clicked on 'PVT' tab under 'Hereditament Form'
+-> skipped because of previous errors
+And User clicks on 'Refresh' button on hereditament dialog and asserts 'status' records
+  --- table step argument ---
+  | status     |
+  | Committed  |
+  | Superseded |
+-> skipped because of previous errors
+And user asserts "Effective Date","Effective To" for "Amend" records
+  --- table step argument ---
+  | fromDateColumn    | effectiveToDateColumn | status     |
+  | EffectiveFromDate |                       | Committed  |
+  | EffectiveFromDate | EffectiveFromDate     | Superseded |
+-> skipped because of previous errors
+And User closes browser
+-> skipped because of previous errors
+[15:38:25 INF] Driver disposed
